@@ -19,6 +19,9 @@ This is the frontend of the Ruby on Rails API [homefinder_api](https://github.co
 
 [Live Demo Link]( https://)
 
+## Backend repository link
+[homefinder_api](https://github.com/lekegitrepo/homefinder_api/tree/homefinder_api)
+
 ## Installation
 
 1. Clone the repository in your local machine.
