@@ -8,6 +8,8 @@ import Homes from '../../components/pages/Homes.index.page';
 import HomeDetail from '../../components/pages/Home.show.page';
 import FavouriteHomes from '../../components/pages/FavouriteHomes';
 import PageRouter from '../../containers/pageRouter.container';
+import Registration from '../../components/auth/Registration';
+import Login from '../../components/auth/Login';
 
 test('Valid route path for the home page', () => {
   const wrapper = mount(
@@ -57,4 +59,24 @@ test('Valid route for the favourite houses page', () => {
   )
   expect(wrapper.find(PageNotFound)).toHaveLength(0)
   expect(wrapper.find(FavouriteHomes)).toHaveLength(1)
+})
+
+test('Valid route for the login page', () => {
+  const wrapper = mount(
+    <MemoryRouter initialEntries={['/login']}>
+      <Login />
+    </MemoryRouter>
+  )
+  expect(wrapper.find(PageNotFound)).toHaveLength(0)
+  expect(wrapper.find(Login)).toHaveLength(1)
+})
+
+test('Valid route for the registration page', () => {
+  const wrapper = mount(
+    <MemoryRouter initialEntries={['/registration']}>
+      <Registration />
+    </MemoryRouter>
+  )
+  expect(wrapper.find(PageNotFound)).toHaveLength(0)
+  expect(wrapper.find(Registration)).toHaveLength(1)
 })
