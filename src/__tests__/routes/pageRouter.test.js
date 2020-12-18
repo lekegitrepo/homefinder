@@ -6,6 +6,7 @@ import Home from '../../components/pages/Home';
 import PageNotFound from '../../components/pages/PageNotFound.page';
 import Homes from '../../components/pages/Homes.index.page';
 import HomeDetail from '../../components/pages/Home.show.page';
+import FavouriteHomes from '../../components/pages/FavouriteHomes';
 import PageRouter from '../../containers/pageRouter.container';
 
 test('Valid route path for the home page', () => {
@@ -46,4 +47,14 @@ test('Valid route for the home show page', () => {
   )
   expect(wrapper.find(PageNotFound)).toHaveLength(0)
   expect(wrapper.find(HomeDetail)).toHaveLength(1)
+})
+
+test('Valid route for the favourite houses page', () => {
+  const wrapper = mount(
+    <MemoryRouter initialEntries={['/favourites']}>
+      <FavouriteHomes />
+    </MemoryRouter>
+  )
+  expect(wrapper.find(PageNotFound)).toHaveLength(0)
+  expect(wrapper.find(FavouriteHomes)).toHaveLength(1)
 })
