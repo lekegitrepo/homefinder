@@ -1,8 +1,11 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import React from 'react';
+import { shallow } from 'enzyme';
+import App from '../containers/App';
+
+//jest.mock('../containers/App')
 
 test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const wrapper = shallow(<App />);
+  const text = wrapper.find('p').text();
+  expect(text).toContain('Edit');
 });
