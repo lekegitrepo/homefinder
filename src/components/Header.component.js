@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-const Header = ({ navbar }) => (
+const Header = () => (
   <header>
-    <nav>{navbar}</nav>
+    <nav>{/* Navbar contents: logo SIGIN SIGNUP */}</nav>
     <section>
       <h3>Find Housing anywhere</h3>
       <p>
@@ -11,12 +11,12 @@ const Header = ({ navbar }) => (
         feel yourself like at your own home.
       </p>
       <div>
-        <Link to='/registration' className='btn__main'>
+        <Link to="/registration" className="btn__main">
           START FREE
         </Link>
       </div>
     </section>
   </header>
-)
+);
 
 export default Header;

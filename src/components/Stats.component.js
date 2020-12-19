@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Stats = () => (
   <section>
@@ -9,13 +9,13 @@ const Stats = () => (
     </div>
     <div>
       <h4>all stats at your fingertips at any time</h4>
-      <p></p>
-      <Link to='#' className='btn--learnmore'>LEARN MORE</Link>
+      <p />
+      <Link to="#" className="btn--learnmore">LEARN MORE</Link>
     </div>
     <div>
-      <img src={''} alt='stats image' className='stats__image' />
+      <img src="" alt="stats image" className="stats__image" />
     </div>
   </section>
-)
+);
 
 export default Stats;
