@@ -8,8 +8,9 @@ const Stats = () => (
         <h3>Comfortable home from reliable people</h3>
       </div>
       <div>
-        The best offers for you at any point of your journey. Wherever you are,
-        feel yourself like at your own home.
+        <h4>all stats at your fingertips at any time</h4>
+        <p></p>
+        <Link to='#' className='btn--learnmore'>LEARN MORE</Link>
       </div>
       <div>
         <img src={''} alt='stats image' className='stats__image' />
