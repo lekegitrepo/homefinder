@@ -1,4 +1,5 @@
 import React from 'react';
+
 const Places = ({ cardImages }) => (
   <section>
     <div>

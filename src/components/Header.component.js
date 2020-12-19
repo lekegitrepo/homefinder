@@ -11,7 +11,7 @@ const Header = ({ navbar }) => (
         feel yourself like at your own home.
       </p>
       <div>
-        <Link path='/registration' className='btn__main'>
+        <Link to='/registration' className='btn__main'>
           START FREE
         </Link>
       </div>
