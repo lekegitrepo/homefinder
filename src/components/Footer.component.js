@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Footer = ({ cardImages }) => (
+const Footer = () => (
   <footer>
     <div>
       {/* Logo component here */}

@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Places = ({ cardImages }) => (
+const Places = () => (
   <section>
     <div>
       {/* cardImages loop here */}
-      <img src="" alt="home image" className="home__image image1" />
-      <img src="" alt="home image" className="home__image image2" />
-      <img src="" alt="home image" className="home__image image3" />
+      {/* <img src={} alt="home" className="home__image image1" />
+      <img src={} alt="home" className="home__image image2" />
+      <img src={} alt="home" className="home__image image3" /> */}
     </div>
     <div>
       <h4>Only best places for your rest</h4>

@@ -10,10 +10,10 @@ const Stats = () => (
     <div>
       <h4>all stats at your fingertips at any time</h4>
       <p />
-      <Link to="#" className="btn--learnmore">LEARN MORE</Link>
+      <Link to="/homes" className="btn--learnmore">LEARN MORE</Link>
     </div>
     <div>
-      <img src="" alt="stats image" className="stats__image" />
+      <img src="" alt="stats" className="stats__image" />
     </div>
   </section>
 );
