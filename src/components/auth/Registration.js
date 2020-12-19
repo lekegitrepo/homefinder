@@ -2,9 +2,9 @@
 import React from 'react';
 
 const Registration = () => (
-    <section>
-      <h3>Sign Up</h3>
-    </section>
-)
+  <section>
+    <h3>Sign Up</h3>
+  </section>
+);
 
 export default Registration;

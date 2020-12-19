@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import App from '../containers/App';
 
-//jest.mock('../containers/App')
+// jest.mock('../containers/App')
 
 test('renders learn react link', () => {
   const wrapper = shallow(<App />);

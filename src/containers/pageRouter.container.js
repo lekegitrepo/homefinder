@@ -14,22 +14,22 @@ const PageRouter = () => (
   <Provider store={store}>
     <Router>
       <Switch>
-        <Route exact path='/'>
+        <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path='/login'>
+        <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path='/registration'>
+        <Route exact path="/registration">
           <Registration />
         </Route>
-        <Route exact path='/homes'>
+        <Route exact path="/homes">
           <Homes />
         </Route>
-        <Route exact path='/home/:id'>
+        <Route exact path="/home/:id">
           <HomeDetail />
         </Route>
-        <Route exact path='/favourites'>
+        <Route exact path="/favourites">
           <FavouriteHomes />
         </Route>
         <Route>
@@ -38,6 +38,6 @@ const PageRouter = () => (
       </Switch>
     </Router>
   </Provider>
-)
+);
 
 export default PageRouter;

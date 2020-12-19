@@ -15,68 +15,68 @@ test('Valid route path for the home page', () => {
   const wrapper = mount(
     <MemoryRouter initialEntries={['/']}>
       <Home />
-    </MemoryRouter>
-  )
-  expect(wrapper.find(PageNotFound)).toHaveLength(0)
-  expect(wrapper.find(Home)).toHaveLength(1)
-})
+    </MemoryRouter>,
+  );
+  expect(wrapper.find(PageNotFound)).toHaveLength(0);
+  expect(wrapper.find(Home)).toHaveLength(1);
+});
 
 test('Invalid route should redirect to page not found', () => {
   const wrapper = mount(
     <MemoryRouter initialEntries={['/some-invalid-routes']}>
       <PageRouter />
-    </MemoryRouter>
-  )
-  expect(wrapper.find(Home)).toHaveLength(0)
-  expect(wrapper.find(PageNotFound)).toHaveLength(1)
+    </MemoryRouter>,
+  );
+  expect(wrapper.find(Home)).toHaveLength(0);
+  expect(wrapper.find(PageNotFound)).toHaveLength(1);
 });
 
 test('Valid route for the homes list index page', () => {
   const wrapper = mount(
     <MemoryRouter initialEntries={['/homes']}>
       <Homes />
-    </MemoryRouter>
-  )
-  expect(wrapper.find(PageNotFound)).toHaveLength(0)
-  expect(wrapper.find(Homes)).toHaveLength(1)
-})
+    </MemoryRouter>,
+  );
+  expect(wrapper.find(PageNotFound)).toHaveLength(0);
+  expect(wrapper.find(Homes)).toHaveLength(1);
+});
 
 test('Valid route for the home show page', () => {
   const wrapper = mount(
     <MemoryRouter initialEntries={['/home/:id']}>
       <HomeDetail />
-    </MemoryRouter>
-  )
-  expect(wrapper.find(PageNotFound)).toHaveLength(0)
-  expect(wrapper.find(HomeDetail)).toHaveLength(1)
-})
+    </MemoryRouter>,
+  );
+  expect(wrapper.find(PageNotFound)).toHaveLength(0);
+  expect(wrapper.find(HomeDetail)).toHaveLength(1);
+});
 
 test('Valid route for the favourite houses page', () => {
   const wrapper = mount(
     <MemoryRouter initialEntries={['/favourites']}>
       <FavouriteHomes />
-    </MemoryRouter>
-  )
-  expect(wrapper.find(PageNotFound)).toHaveLength(0)
-  expect(wrapper.find(FavouriteHomes)).toHaveLength(1)
-})
+    </MemoryRouter>,
+  );
+  expect(wrapper.find(PageNotFound)).toHaveLength(0);
+  expect(wrapper.find(FavouriteHomes)).toHaveLength(1);
+});
 
 test('Valid route for the login page', () => {
   const wrapper = mount(
     <MemoryRouter initialEntries={['/login']}>
       <Login />
-    </MemoryRouter>
-  )
-  expect(wrapper.find(PageNotFound)).toHaveLength(0)
-  expect(wrapper.find(Login)).toHaveLength(1)
-})
+    </MemoryRouter>,
+  );
+  expect(wrapper.find(PageNotFound)).toHaveLength(0);
+  expect(wrapper.find(Login)).toHaveLength(1);
+});
 
 test('Valid route for the registration page', () => {
   const wrapper = mount(
     <MemoryRouter initialEntries={['/registration']}>
       <Registration />
-    </MemoryRouter>
-  )
-  expect(wrapper.find(PageNotFound)).toHaveLength(0)
-  expect(wrapper.find(Registration)).toHaveLength(1)
-})
+    </MemoryRouter>,
+  );
+  expect(wrapper.find(PageNotFound)).toHaveLength(0);
+  expect(wrapper.find(Registration)).toHaveLength(1);
+});
