@@ -1,5 +1,6 @@
-// API URL: https://homefinderapi.herokuapp.com/api/v1/...
+/* eslint-disable camelcase */
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Registration = () => {
   const [state, setState] = useState({
@@ -18,6 +19,29 @@ const Registration = () => {
   };
 
   const handleSubmit = event => {
+    const {
+      fullname, email, username, password, password_confirmation,
+    } = state;
+    axios.post('https://homefinderapi.herokuapp.com/api/v1/sign_up', {
+      user: {
+        fullname,
+        email,
+        username,
+        password,
+        password_confirmation,
+      },
+    },
+    { withCredentials: true }).then(response => {
+      if (response.statusText === 'Created') {
+        console.log(response);
+      } else {
+        console.log('todo populate registration error');
+      }
+    }).catch(error => {
+      console.log('registrations error', error);
+    });
+    event.preventDefault();
+    console.log(state);
     event.preventDefault();
     console.log(state);
   };
