@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Login = () => {
   const [state, setState] = useState({
@@ -14,6 +15,23 @@ const Login = () => {
   };
 
   const handleSubmit = event => {
+    const { email, password } = state;
+
+    axios.post('https://homefinderapi.herokuapp.com/api/v1/sign_in', {
+      session: {
+        email,
+        password,
+      },
+    },
+    { withCredentials: true }).then(response => {
+      if (response.data.is_success === true) {
+        console.log(response);
+      } else {
+        console.log('todo populate registration error');
+      }
+    }).catch(error => {
+      console.log('registrations error', error);
+    });
     event.preventDefault();
     console.log(state);
   };
