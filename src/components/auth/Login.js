@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+// import PropTypes from 'prop-types';
 import axios from 'axios';
 
 const Login = () => {
@@ -6,6 +8,8 @@ const Login = () => {
     email: '',
     password: '',
   });
+
+  const history = useHistory();
 
   const handleChange = event => {
     setState(prevProps => ({
@@ -26,6 +30,7 @@ const Login = () => {
     { withCredentials: true }).then(response => {
       if (response.data.is_success === true) {
         console.log(response);
+        history.push('/homes');
       } else {
         console.log('todo populate registration error');
       }
@@ -55,5 +60,9 @@ const Login = () => {
     </section>
   );
 };
+
+/* Login.defaultProps = {};
+
+Login.propTypes = {}; */
 
 export default Login;
