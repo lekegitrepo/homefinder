@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
-import register from './register.reducer';
+import currentUser from './currentUser.reducer';
+import favouriteHomes from './favouriteHomes.reducer'
 
-const rootReducer = combineReducers({ register });
+const rootReducer = combineReducers({ currentUser, favouriteHomes });
 
 export default rootReducer;
