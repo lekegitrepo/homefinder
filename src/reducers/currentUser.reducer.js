@@ -1,16 +1,16 @@
 const currentUser = (state = {}, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'CREATE_USER':
       return {
-        ...state, user: action.payload, loggedIn: true
-      }
+        ...state, user: action.payload, loggedIn: true,
+      };
     case 'LOGOUT':
       return {
-        ...state, user: {}, loggedIn: false
-      }
+        ...state, user: {}, loggedIn: false,
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
 export default currentUser;
