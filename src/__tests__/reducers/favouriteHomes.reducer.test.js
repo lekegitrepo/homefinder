@@ -97,14 +97,16 @@ describe('Add item to the favourite homes list', () => {
     expect(initialState).toEqual(homesFavList);
   })
 
-  test('default state', () => {
+  test('add item to the list', () => {
     const { addFavourite } = homeActions
     const action = addFavourite(itemToAdd)
     const updateState = favouriteHomes(homesFavList, action);
     expect(updateState).toEqual(updateHomeFavList);
   })
+})
 
-  test('default state', () => {
+describe('remove item from the list', () => {
+  test('delete a item in the list', () => {
     const { removeFavourite } = homeActions
     const action = removeFavourite(itemToDelete)
     const updateState = favouriteHomes(updateHomeFavList, action);
