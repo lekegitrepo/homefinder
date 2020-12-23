@@ -9,6 +9,6 @@ const Card = () => (
       {/* SUMMARY HERE */}
     </div>
   </div>
-)
+);
 
 export default Card;
