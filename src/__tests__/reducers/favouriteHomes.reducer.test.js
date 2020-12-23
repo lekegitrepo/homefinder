@@ -1,5 +1,4 @@
 import favouriteHomes from '../../reducers/favouriteHomes.reducer';
-// import { addFavourite, removeFavourite } from '../../actions/home.action'
 import actions from '../../actions/index.actions';
 
 const { homeActions } = actions;
