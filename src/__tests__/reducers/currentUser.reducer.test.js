@@ -22,3 +22,17 @@ describe('create user state', () => {
     expect(userCurrentState.user).toEqual(user)
   })
 })
+
+describe('user logout state', () => {
+  test('create state for the current user', () => {
+    const { createUser } = userActions;
+    const userCurrentState = currentUser({}, createUser(user));
+    expect(userCurrentState.user).toEqual(user)
+  })
+
+  test('create state for the user logout', () => {
+    const { logout } = userActions;
+    const userLogoutState = currentUser(user, logout());
+    expect(userLogoutState.user).toEqual({})
+  })
+})
