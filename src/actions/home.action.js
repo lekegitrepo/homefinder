@@ -12,4 +12,4 @@ const removeFavourite = (homeObj) => {
   }
 }
 
-export { addFavourite, removeFavourite }
+export default { addFavourite, removeFavourite }

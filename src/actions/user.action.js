@@ -11,4 +11,4 @@ const logout = () => {
   }
 }
 
-export { createUser, logout }
+export default { createUser, logout }
