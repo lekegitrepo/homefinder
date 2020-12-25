@@ -2,8 +2,8 @@ import React from 'react';
 import { mount } from 'enzyme';
 import ReactDom from 'react-dom';
 import { MemoryRouter } from 'react-router';
-import { Provider } from 'react-redux'
-import configureStore from "redux-mock-store";
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import Home from '../../components/pages/Home';
 import PageNotFound from '../../components/pages/PageNotFound.page';
 import Homes from '../../components/pages/Homes.index.page';
@@ -39,9 +39,12 @@ describe('Validate the routes', () => {
   });
 
   test('Valid route for the homes list index page', () => {
+    store = mockStore(initialState);
     const wrapper = mount(
       <MemoryRouter initialEntries={['/homes']}>
-        <Homes />
+        <Provider store={store}>
+          <Homes />
+        </Provider>
       </MemoryRouter>,
     );
     expect(wrapper.find(PageNotFound)).toHaveLength(0);
@@ -93,4 +96,4 @@ describe('Validate the routes', () => {
     expect(wrapper.find(PageNotFound)).toHaveLength(0);
     expect(wrapper.find(Registration)).toHaveLength(1);
   });
-})
+});
