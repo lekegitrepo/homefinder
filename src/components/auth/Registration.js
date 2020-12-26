@@ -1,13 +1,14 @@
 /* eslint-disable camelcase */
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState /* useEffect */ } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import actions from '../../actions/index.actions';
+import { postFormRequest } from '../../services/apiRequests.services';
 
 const Registration = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [state, setState] = useState({
     fullname: '',
@@ -19,8 +20,6 @@ const Registration = () => {
 
   const [status, setStatus] = useState({ loading: false });
 
-  const currentUser = useSelector(state => state.currentUser);
-
   const handleChange = event => {
     setState(prevProps => ({
       ...prevProps,
@@ -29,25 +28,10 @@ const Registration = () => {
   };
 
   const handleSubmit = event => {
-    const {
-      fullname, email, username, password, password_confirmation,
-    } = state;
     setStatus({ loading: true });
-    axios.post('https://homefinderapi.herokuapp.com/api/v1/sign_up', {
-      user: {
-        fullname,
-        email,
-        username,
-        password,
-        password_confirmation,
-      },
-    },
-    { withCredentials: true }).then(response => {
-      if (response.statusText === 'Created') {
-        setStatus({ loading: false });
-        console.log(response);
-        dispatch(actions.userActions.createUser(response.data));
-        // console.log(currentUser);
+    postFormRequest('sign_up', { user: { ...state } }).then(response => {
+      if (response.data.is_success === true) {
+        dispatch(actions.userActions.createUser(response.data.user));
         history.push('/');
       } else {
         console.log('todo populate registration error');
@@ -56,14 +40,12 @@ const Registration = () => {
       console.log('registrations error', error);
     });
     event.preventDefault();
-    console.log(state);
   };
 
   return (
     status.loading === true ? (
       <h1>
         Submitting form...
-        {currentUser.user.fullname}
       </h1>
     )
       : (
