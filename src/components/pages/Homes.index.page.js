@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 // import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { v4 } from 'uuid';
 import { getHomesListRequest } from '../../services/apiRequests.services';
+import Card from '../Card.component';
 
 const Homes = () => {
   // const currentUser = useSelector(state => state.currentUser);
@@ -26,6 +28,7 @@ const Homes = () => {
   return (
     <section>
       <h1>List of Houses for rent</h1>
+      {list.homes.map(item => <Card key={v4()} detail={item} />)}
       <Link to="/">
         Back to Home page
       </Link>
