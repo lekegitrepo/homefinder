@@ -1,12 +1,6 @@
-const actions = {
-  SIGN_IN: 'SIGN_IN',
-};
+import userActions from './user.action';
+import homeActions from './home.action';
 
-const signIn = authStatus => (
-  {
-    type: actions.ADD_RECIPES,
-    authStatus,
-  }
-);
+const actions = { userActions, homeActions };
 
-export { actions, signIn };
+export default actions;
