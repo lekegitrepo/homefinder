@@ -7,5 +7,5 @@ export const postFormRequest = (reqUrl, userData) => axios.post(`${API_BASE_URL}
   userData,
   { withCredentials: true }).then(resp => resp).catch(error => error);
 
-export const getHomesListRequest = (reqUrl) => axios.get(`${API_BASE_URL}/${reqUrl}`,
+export const getHomesListRequest = reqUrl => axios.get(`${API_BASE_URL}/${reqUrl}`,
   { withCredentials: true }).then(resp => resp).catch(error => error);
