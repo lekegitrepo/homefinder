@@ -19,9 +19,12 @@ describe('Validate the routes', () => {
   let store;
 
   test('Valid route path for the home page', () => {
+    store = mockStore(initialState);
     const wrapper = mount(
       <MemoryRouter initialEntries={['/']}>
-        <Home />
+        <Provider store={store}>
+          <Home />
+        </Provider>
       </MemoryRouter>,
     );
     expect(wrapper.find(PageNotFound)).toHaveLength(0);
