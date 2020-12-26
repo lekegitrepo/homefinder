@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-// import PropTypes from 'prop-types';
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import actions from '../../actions/index.actions';
+import { postFormRequest } from '../../services/apiRequests.services';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -16,8 +15,6 @@ const Login = () => {
 
   const [status, setStatus] = useState({ loading: false });
 
-  const currentUser = useSelector(state => state.currentUser);
-
   const handleChange = event => {
     setState(prevProps => ({
       ...prevProps,
@@ -26,20 +23,11 @@ const Login = () => {
   };
 
   const handleSubmit = event => {
-    const { email, password } = state;
     setStatus({ loading: true });
 
-    axios.post('https://homefinderapi.herokuapp.com/api/v1/sign_in', {
-      session: {
-        email,
-        password,
-      },
-    },
-    { withCredentials: true }).then(response => {
+    postFormRequest('sign_in', { session: { ...state } }).then(response => {
       if (response.data.is_success === true) {
-        dispatch(actions.userActions.createUser(response.data));
-        console.log(response);
-        console.log(currentUser);
+        dispatch(actions.userActions.createUser(response.data.user));
         history.push('/homes');
       } else {
         console.log('todo populate registration error');
@@ -48,14 +36,12 @@ const Login = () => {
       console.log('registrations error', error);
     });
     event.preventDefault();
-    console.log(state);
   };
 
   return (
     status.loading === true ? (
       <h1>
         Submitting form...
-        {currentUser.user.user.fullname}
       </h1>
     )
       : (
