@@ -56,7 +56,7 @@ describe('API GET Requests', () => {
       description: 'This is a beautiful house',
       location: 'Countryside',
     },
-  ]
+  ];
 
   axios.get.mockResolvedValue({ data });
   test('axios request', () => {
