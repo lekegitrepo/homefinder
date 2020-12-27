@@ -67,4 +67,12 @@ describe('API GET Requests', () => {
     getHomesListRequest('homes');
     expect(axios.get).toHaveBeenCalledTimes(1);
   });
+
+  test('get request for homes list', () => getHomesListRequest('homes').then(res => {
+    expect(res.data).toEqual(data);
+  }));
+
+  test('get bad request for homes list', () => getHomesListRequest('hmes').catch(err => {
+    expect(err).toEqual(new Error());
+  }));
 });
