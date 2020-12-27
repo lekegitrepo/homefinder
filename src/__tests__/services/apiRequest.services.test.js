@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { postFormRequest, getHomesListRequest } from '../../services/apiRequests.services';
+import { postFormRequest, getHomesListRequest, postFavouriteHomeRequest } from '../../services/apiRequests.services';
 
 jest.mock('axios');
 
-describe('API POST Requests', () => {
+describe('API POST Requests for user', () => {
   const resp = {
     id: 1,
     fullname: 'John Doe',
@@ -30,7 +30,7 @@ describe('API POST Requests', () => {
   }));
 });
 
-describe('API GET Requests', () => {
+describe('API GET Requests for home list', () => {
   const data = [
     {
       id: 1,
@@ -73,6 +73,53 @@ describe('API GET Requests', () => {
   }));
 
   test('get bad request for homes list', () => getHomesListRequest('hmes').catch(err => {
+    expect(err).toEqual(new Error());
+  }));
+});
+
+describe('API Requests for favourite home', () => {
+  const data = [
+    {
+      id: 1,
+      home: 'Apartment',
+      description: 'This is a beautiful house',
+      location: 'Urban',
+    },
+    {
+      id: 2,
+      home: 'Mansion',
+      description: 'This is a beautiful house',
+      location: 'Urban',
+    },
+    {
+      id: 3,
+      home: 'cottage',
+      description: 'This is a beautiful house',
+      location: 'Country side',
+    },
+    {
+      id: 4,
+      home: 'Manor',
+      description: 'This is a beautiful house',
+      location: 'Countryside',
+    },
+  ];
+
+  axios.post.mockResolvedValue({ data });
+  test('axios request', () => {
+    axios.post = jest.fn(() => Promise.resolve({ data }));
+
+    axios.post.mockImplementationOnce(() => Promise.resolve({ data }));
+
+    postFavouriteHomeRequest('homes', data[0].id);
+    expect(axios.get).toHaveBeenCalledTimes(3);
+  });
+
+  test('post request for favourite home', () => postFavouriteHomeRequest('homes', data[1].id).then(res => {
+    expect(res.data[1]).toEqual(data[1]);
+  }));
+
+  test('post bad request for homes list', () => postFavouriteHomeRequest('home', 45).catch(err => {
     expect(err).toEqual(new Error());
   }));
 });
