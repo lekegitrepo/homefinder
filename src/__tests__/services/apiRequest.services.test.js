@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { postFormRequest, getHomesListRequest, postFavouriteHomeRequest } from '../../services/apiRequests.services';
+import { postFormRequest, getHomesListRequest, postFavouriteHomeRequest, deleteFavouriteHomeRequest } from '../../services/apiRequests.services';
 
 jest.mock('axios');
 
@@ -112,7 +112,7 @@ describe('API Requests for favourite home', () => {
     axios.post.mockImplementationOnce(() => Promise.resolve({ data }));
 
     postFavouriteHomeRequest('homes', data[0].id);
-    expect(axios.get).toHaveBeenCalledTimes(3);
+    expect(axios.post).toHaveBeenCalledTimes(1);
   });
 
   test('post request for favourite home', () => postFavouriteHomeRequest('homes', data[1].id).then(res => {
@@ -122,4 +122,45 @@ describe('API Requests for favourite home', () => {
   test('post bad request for homes list', () => postFavouriteHomeRequest('home', 45).catch(err => {
     expect(err).toEqual(new Error());
   }));
+
+  describe('API Delete request', () => {
+    const data = [
+      {
+        id: 1,
+        home: 'Apartment',
+        description: 'This is a beautiful house',
+        location: 'Urban',
+      },
+      {
+        id: 2,
+        home: 'Mansion',
+        description: 'This is a beautiful house',
+        location: 'Urban',
+      },
+      {
+        id: 3,
+        home: 'cottage',
+        description: 'This is a beautiful house',
+        location: 'Country side',
+      },
+    ];
+
+    axios.delete.mockResolvedValue({ data });
+    test('axios request', () => {
+      axios.delete = jest.fn(() => Promise.resolve({ }));
+
+      axios.delete.mockImplementationOnce(() => Promise.resolve({ data }));
+
+      deleteFavouriteHomeRequest('favourites', data[0].id);
+      expect(axios.delete).toHaveBeenCalledTimes(1);
+    });
+
+    test('delete home from favourite list', () => deleteFavouriteHomeRequest('favourites', data[1].id).then(resp => {
+      expect(resp).toEqual({});
+    }));
+
+    test('bad delete request', () => deleteFavouriteHomeRequest('favourit', data[1].id).catch(err => {
+      expect(err).toEqual(new Error());
+    }));
+  });
 });
