@@ -19,6 +19,9 @@ export const postFavouriteHomeRequest = (reqUrl, id, auth = '') => axios.post(`$
   .then(resp => resp)
   .catch(error => error);
 
+export const getFavouriteHomesRequest = (reqUrl, auth = '') => axios.get(`${API_BASE_URL}/${reqUrl}`,
+  { withCredentials: true }).then(resp => resp).catch(error => error);
+
 export const deleteFavouriteHomeRequest = (reqUrl, id, auth = '') => axios.delete(`${API_BASE_URL}/${reqUrl}/`,
   id,
   {
