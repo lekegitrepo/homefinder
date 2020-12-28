@@ -10,7 +10,16 @@ export const postFormRequest = (reqUrl, userData) => axios.post(`${API_BASE_URL}
 export const getHomesListRequest = reqUrl => axios.get(`${API_BASE_URL}/${reqUrl}`,
   { withCredentials: true }).then(resp => resp).catch(error => error);
 
-export const postFavouriteHomeRequest = (reqUrl, id, auth) => axios.post(`${API_BASE_URL}/${reqUrl}/`,
+export const postFavouriteHomeRequest = (reqUrl, id, auth = '') => axios.post(`${API_BASE_URL}/${reqUrl}/`,
+  id,
+  {
+    headers: { Authenticate: auth },
+    withCredentials: true,
+  })
+  .then(resp => resp)
+  .catch(error => error);
+
+export const deleteFavouriteHomeRequest = (reqUrl, id, auth = '') => axios.delete(`${API_BASE_URL}/${reqUrl}/`,
   id,
   {
     headers: { Authenticate: auth },
