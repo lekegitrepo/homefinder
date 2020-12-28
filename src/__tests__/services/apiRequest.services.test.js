@@ -3,6 +3,33 @@ import { postFormRequest, getHomesListRequest, postFavouriteHomeRequest, deleteF
 
 jest.mock('axios');
 
+const data = [
+  {
+    id: 1,
+    home: 'Apartment',
+    description: 'This is a beautiful house',
+    location: 'Urban',
+  },
+  {
+    id: 2,
+    home: 'Mansion',
+    description: 'This is a beautiful house',
+    location: 'Urban',
+  },
+  {
+    id: 3,
+    home: 'cottage',
+    description: 'This is a beautiful house',
+    location: 'Country side',
+  },
+  {
+    id: 4,
+    home: 'Manor',
+    description: 'This is a beautiful house',
+    location: 'Countryside',
+  },
+];
+
 describe('API POST Requests for user', () => {
   const resp = {
     id: 1,
@@ -31,33 +58,6 @@ describe('API POST Requests for user', () => {
 });
 
 describe('API GET Requests for home list', () => {
-  const data = [
-    {
-      id: 1,
-      home: 'Apartment',
-      description: 'This is a beautiful house',
-      location: 'Urban',
-    },
-    {
-      id: 2,
-      home: 'Mansion',
-      description: 'This is a beautiful house',
-      location: 'Urban',
-    },
-    {
-      id: 3,
-      home: 'cottage',
-      description: 'This is a beautiful house',
-      location: 'Country side',
-    },
-    {
-      id: 4,
-      home: 'Manor',
-      description: 'This is a beautiful house',
-      location: 'Countryside',
-    },
-  ];
-
   axios.get.mockResolvedValue({ data });
   test('axios request', () => {
     axios.get = jest.fn(() => Promise.resolve({ data }));
@@ -78,73 +78,27 @@ describe('API GET Requests for home list', () => {
 });
 
 describe('API Requests for favourite home', () => {
-  const data = [
-    {
-      id: 1,
-      home: 'Apartment',
-      description: 'This is a beautiful house',
-      location: 'Urban',
-    },
-    {
-      id: 2,
-      home: 'Mansion',
-      description: 'This is a beautiful house',
-      location: 'Urban',
-    },
-    {
-      id: 3,
-      home: 'cottage',
-      description: 'This is a beautiful house',
-      location: 'Country side',
-    },
-    {
-      id: 4,
-      home: 'Manor',
-      description: 'This is a beautiful house',
-      location: 'Countryside',
-    },
-  ];
+  describe('API Post request', () => {
+    axios.post.mockResolvedValue({ data });
+    test('axios request', () => {
+      axios.post = jest.fn(() => Promise.resolve({ data }));
 
-  axios.post.mockResolvedValue({ data });
-  test('axios request', () => {
-    axios.post = jest.fn(() => Promise.resolve({ data }));
+      axios.post.mockImplementationOnce(() => Promise.resolve({ data }));
 
-    axios.post.mockImplementationOnce(() => Promise.resolve({ data }));
+      postFavouriteHomeRequest('homes', data[0].id);
+      expect(axios.post).toHaveBeenCalledTimes(1);
+    });
 
-    postFavouriteHomeRequest('homes', data[0].id);
-    expect(axios.post).toHaveBeenCalledTimes(1);
-  });
+    test('post request for favourite home', () => postFavouriteHomeRequest('homes', data[1].id).then(res => {
+      expect(res.data[1]).toEqual(data[1]);
+    }));
 
-  test('post request for favourite home', () => postFavouriteHomeRequest('homes', data[1].id).then(res => {
-    expect(res.data[1]).toEqual(data[1]);
-  }));
-
-  test('post bad request for homes list', () => postFavouriteHomeRequest('home', 45).catch(err => {
-    expect(err).toEqual(new Error());
-  }));
+    test('post bad request for homes list', () => postFavouriteHomeRequest('home', 45).catch(err => {
+      expect(err).toEqual(new Error());
+    }));
+  })
 
   describe('API Delete request', () => {
-    const data = [
-      {
-        id: 1,
-        home: 'Apartment',
-        description: 'This is a beautiful house',
-        location: 'Urban',
-      },
-      {
-        id: 2,
-        home: 'Mansion',
-        description: 'This is a beautiful house',
-        location: 'Urban',
-      },
-      {
-        id: 3,
-        home: 'cottage',
-        description: 'This is a beautiful house',
-        location: 'Country side',
-      },
-    ];
-
     axios.delete.mockResolvedValue({ data });
     test('axios request', () => {
       axios.delete = jest.fn(() => Promise.resolve({ }));
