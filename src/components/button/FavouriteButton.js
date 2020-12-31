@@ -1,33 +1,60 @@
 /* eslint-disable camelcase */
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { postFavouriteHomeRequest } from '../../services/apiRequests.services';
+import { postFavouriteHomeRequest, deleteFavouriteHomeRequest } from '../../services/apiRequests.services';
+import actions from '../../actions/index.actions';
 
 const FavButton = ({
   id, icon, picked, userObj,
 }) => {
+  const dispatch = useDispatch();
   const [state, setState] = useState(picked);
+  const favourite = useSelector(state => state.favouriteHomes);
   const { user } = userObj;
-  console.log('This is user:', user.auth_token);
 
-  const handleClick = () => postFavouriteHomeRequest('favourites', { id }, user.auth_token).then(resp => {
-    console.log('This is handleClick');
+  const handleCreateFavourite = () => postFavouriteHomeRequest('favourites', { id }, user.auth_token).then(resp => {
     if (resp.statusText === 'Created') {
       setState(!state);
+      const dis = dispatch(actions.homeActions.addFavourite({
+        obj: resp.data,
+        homeId: id,
+      })); // homeId: resp.data.favourites.id,
+      console.log('This is a favourite home:', favourite);
       console.log(resp);
-      console.log('This is state:', state);
+      console.log('This is state and dispatch:', state, dis);
     }
   }).catch(err => {
     console.log('Unable to add home as the favourite', err);
   });
 
+  const fetchFavouriteHome = (list, homeId) => {
+    const id = list.filter(home => home.homeId === homeId);
+    return id[0].fav.favourites.id;
+  };
+
+  const handleRemoveFavourite = () => {
+    const favId = fetchFavouriteHome(favourite, id);
+    deleteFavouriteHomeRequest('remove_fav', { id: favId }, user.auth_token).then(resp => {
+      if (resp.statusText === 'No Content') {
+        setState(!state);
+        dispatch(actions.homeActions.removeFavourite({ id }));
+      }
+    }).catch(err => {
+      console.log('Unable to add home as the favourite', err);
+    });
+  };
+
+  const handleClick = currentState => ((currentState === false)
+    ? handleCreateFavourite : handleRemoveFavourite);
+
   return (
     <button
       type="submit"
-      onClick={handleClick}
+      onClick={handleClick(state)}
       className={state === true ? 'filled' : 'unfilled'}
     >
-      { state === true ? `${icon}` : 'unfilled' }
+      { state === false ? `Add ${icon}` : `Remove ${icon}` }
     </button>
   );
 };
