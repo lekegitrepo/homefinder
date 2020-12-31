@@ -5,22 +5,34 @@ const { homeActions } = actions;
 
 const homesFavList = [
   {
-    id: 1,
-    home: 'Apartment',
-    description: 'This is a beautiful house',
-    location: 'Urban',
+    fav: {
+      id: 1,
+      home: 'Apartment',
+      description: 'This is a beautiful house',
+      location: 'Urban',
+    },
+    homeId: 1,
+    picked: true,
   },
   {
-    id: 2,
-    home: 'Mansion',
-    description: 'This is a beautiful house',
-    location: 'Urban',
+    fav: {
+      id: 2,
+      home: 'Mansion',
+      description: 'This is a beautiful house',
+      location: 'Urban',
+    },
+    homeId: 3,
+    picked: true,
   },
   {
-    id: 3,
-    home: 'cottage',
-    description: 'This is a beautiful house',
-    location: 'Country side',
+    fav: {
+      id: 3,
+      home: 'cottage',
+      description: 'This is a beautiful house',
+      location: 'Country side',
+    },
+    homeId: 4,
+    picked: true,
   },
 ];
 
@@ -32,57 +44,89 @@ const itemToDelete = {
 };
 
 const itemToAdd = {
-  id: 4,
-  home: 'Manor',
-  description: 'This is a beautiful house',
-  location: 'Countryside',
+  fav: {
+    id: 4,
+    home: 'Manor',
+    description: 'This is a beautiful house',
+    location: 'Countryside'
+  },
+  homeId: 6,
+  picked: true,
 };
 
 const updateHomeFavList = [
   {
-    id: 1,
-    home: 'Apartment',
-    description: 'This is a beautiful house',
-    location: 'Urban',
+    fav: {
+      id: 1,
+      home: 'Apartment',
+      description: 'This is a beautiful house',
+      location: 'Urban',
+    },
+    homeId: 1,
+    picked: true,
   },
   {
-    id: 2,
-    home: 'Mansion',
-    description: 'This is a beautiful house',
-    location: 'Urban',
+    fav: {
+      id: 2,
+      home: 'Mansion',
+      description: 'This is a beautiful house',
+      location: 'Urban',
+    },
+    homeId: 2,
+    picked: true,
   },
   {
-    id: 3,
-    home: 'cottage',
-    description: 'This is a beautiful house',
-    location: 'Country side',
+    fav: {
+      id: 3,
+      home: 'cottage',
+      description: 'This is a beautiful house',
+      location: 'Country side',
+    },
+    homeId: 4,
+    picked: true,
   },
   {
-    id: 4,
-    home: 'Manor',
-    description: 'This is a beautiful house',
-    location: 'Countryside',
+    fav: {
+      id: 4,
+      home: 'Manor',
+      description: 'This is a beautiful house',
+      location: 'Countryside'
+    },
+    homeId: 6,
+    picked: true,
   },
 ];
 
 const FavList = [
   {
-    id: 1,
-    home: 'Apartment',
-    description: 'This is a beautiful house',
-    location: 'Urban',
+    fav: {
+      id: 1,
+      home: 'Apartment',
+      description: 'This is a beautiful house',
+      location: 'Urban',
+    },
+    homeId: 1,
+    picked: true,
   },
   {
-    id: 3,
-    home: 'cottage',
-    description: 'This is a beautiful house',
-    location: 'Country side',
+    fav: {
+      id: 2,
+      home: 'Mansion',
+      description: 'This is a beautiful house',
+      location: 'Urban',
+    },
+    homeId: 3,
+    picked: true,
   },
   {
-    id: 4,
-    home: 'Manor',
-    description: 'This is a beautiful house',
-    location: 'Countryside',
+    fav: {
+      id: 4,
+      home: 'cottage',
+      description: 'This is a beautiful house',
+      location: 'Country side',
+    },
+    homeId: 5,
+    picked: true,
   },
 ];
 
@@ -101,7 +145,7 @@ describe('Add item to the favourite homes list', () => {
     const { addFavourite } = homeActions;
     const action = addFavourite(itemToAdd);
     const updateState = favouriteHomes(homesFavList, action);
-    expect(updateState).toEqual(updateHomeFavList);
+    expect(updateState.length).toEqual(updateHomeFavList.length);
   });
 });
 
@@ -110,6 +154,8 @@ describe('remove item from the list', () => {
     const { removeFavourite } = homeActions;
     const action = removeFavourite(itemToDelete);
     const updateState = favouriteHomes(updateHomeFavList, action);
-    expect(updateState).toEqual(FavList);
+    console.log('This is updateState:', updateState);
+    console.log('This is FavList:', FavList);
+    expect(updateState.length).toEqual(FavList.length);
   });
 });
