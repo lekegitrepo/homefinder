@@ -1,11 +1,11 @@
 import axios from 'axios';
 import {
-         postFormRequest,
-         getHomesListRequest,
-         postFavouriteHomeRequest,
-         deleteFavouriteHomeRequest,
-         getFavouriteHomesRequest,
-       } from '../../services/apiRequests.services';
+  postFormRequest,
+  getHomesListRequest,
+  postFavouriteHomeRequest,
+  deleteFavouriteHomeRequest,
+  getFavouriteHomesRequest,
+} from '../../services/apiRequests.services';
 
 jest.mock('axios');
 
@@ -122,7 +122,7 @@ describe('API Requests for favourite home', () => {
     test('post bad request for homes list', () => postFavouriteHomeRequest('home', 45).catch(err => {
       expect(err).toEqual(new Error());
     }));
-  })
+  });
 
   describe('API Delete request', () => {
     axios.delete.mockResolvedValue({ data });

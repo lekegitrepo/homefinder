@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Card from '../components/Card.component';
 
-
 describe('Render Card component', () => {
   const initialState = {};
   const mockStore = configureStore();
@@ -15,9 +14,8 @@ describe('Render Card component', () => {
     const wrapper = shallow(
       <Provider store={store}>
         <Card />
-      </Provider>
+      </Provider>,
     );
     expect(wrapper.exists()).toBe(true);
   });
-})
-
+});
