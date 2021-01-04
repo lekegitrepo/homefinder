@@ -1,7 +1,29 @@
 .header {
   background-size: cover;
   background-position: center;
-  background-image: url(../../images/hero-small.jpg);
+  background-image: url(../../images/hero.jpg);
+  color: $color-white;
   height: 85vh;
   position: relative;
+
+  &__logo-box {
+    display: flex;
+    justify-content: space-between;
+    top: 4rem;
+    left: 4rem;
+    width: 100%;
+  }
+
+  &__logo {
+    height: 3.5rem;
+  }
+
+  &-navbar__link {
+    
+  }
+  
+  &__text-box {
+    top: 40%;
+    left: 4rem;
+  }
 }
