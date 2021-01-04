@@ -68,12 +68,23 @@
 
     h3 {
       font-size: 3rem;
+
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+
+      width: 30%;
     }
 
     p {
-      font-size: 1rem;
-      font-weight: bolder;
+      font-size: 1.2rem;
+      // font-weight: bolder;
       margin: 1rem 0;
+      hyphens: auto;
+      width: 31%;
+    }
+
+    div.btn-container {
+      margin-top: 3rem;
     }
   }
 }
