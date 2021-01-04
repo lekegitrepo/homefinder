@@ -5,11 +5,11 @@
   color: $color-white;
   height: 85vh;
   position: relative;
+  padding: 1rem 3rem 3rem;
 
   &__logo-box {
     display: flex;
     justify-content: space-between;
-    margin-top: 1rem;
     top: 4rem;
     left: 4rem;
     width: 100%;
@@ -62,7 +62,16 @@
   }
   
   &__text-box {
+    margin-top: 3rem;
     top: 40%;
     left: 4rem;
+
+    h3 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
   }
 }
