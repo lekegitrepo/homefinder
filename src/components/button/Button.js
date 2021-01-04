@@ -13,3 +13,5 @@ Button.propTypes = {
   text: PropTypes.string,
   link: PropTypes.string,
 };
+
+export default Button;
