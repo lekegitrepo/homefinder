@@ -1,14 +1,18 @@
 .stats {
-  font-family: 'Open Sans';
+  font-family: 'Raleway';
 
   &__header {
     margin-bottom: 5rem;
 
     &--primary {
       text-align: center;
+      font-size: .8rem;
+      color: $color-grey-dark;
+      margin-bottom: 1.2rem;
     }
     &--secondary {
       text-align: center;
+      font-size: 2rem;
     }
   }
 
