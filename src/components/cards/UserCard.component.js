@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const UserCard = ({ imagePath, name, ocupation, testimony }) => (
+const UserCard = ({
+  imagePath, name, ocupation, testimony,
+}) => (
   <section className="user">
     <div className="user__image">
       <img src={imagePath} alt="user" />
@@ -24,6 +26,6 @@ UserCard.propTypes = {
   name: PropTypes.string,
   ocupation: PropTypes.string,
   testimony: PropTypes.string,
-}
+};
 
 export default UserCard;
