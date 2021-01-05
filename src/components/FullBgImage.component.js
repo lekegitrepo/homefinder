@@ -1,10 +1,13 @@
 import React from 'react';
+import Button from './button/Button';
 
 const FullBgImage = () => (
-  <section>
-    <h6>Be everywhere at home</h6>
-    <div>
-      {/* START FREE Button component here */}
+  <section className="start">
+    <div className="start__mask">
+      <h6 className="start__mask--header">Be everywhere at home</h6>
+      <div className="start__mask--btn--container">
+        <Button text="START FREE" link="/registration" />
+      </div>
     </div>
   </section>
 );

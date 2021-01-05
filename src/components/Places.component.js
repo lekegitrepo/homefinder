@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Places = () => (
-  <section>
+  <section className="p-auto">
     <div>
       {/* cardImages loop here */}
       {/* <img src={} alt="home" className="home__image image1" />
