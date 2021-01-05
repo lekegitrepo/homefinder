@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
 import { getHomesListRequest } from '../../services/apiRequests.services';
-import Card from '../Card.component';
+import Card from '../cards/Card.component';
 
 const Homes = () => {
   const [list, setList] = useState([]);

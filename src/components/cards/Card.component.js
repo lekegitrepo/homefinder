@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import FavButton from './button/FavouriteButton';
+import FavButton from '../button/FavouriteButton';
 
 const Card = ({ detail }) => {
   const {
