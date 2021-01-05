@@ -4,8 +4,9 @@
   align-items: center;
   justify-content: space-evenly;
   box-shadow: .1rem .1rem .6rem;
-  margin: 2rem;
+  margin: 2rem 0;
   border-radius: .3rem;
+  max-width: 30%;
 
   &__image {
     padding: 3rem;
@@ -18,9 +19,14 @@
 
   &__ocupation {
     margin: .4rem;
+    color: $color-grey-dark;
   }
 
   &__testimony {
     margin: .5rem 1rem 2.5rem;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.3rem;
+    color: $color-grey-dark;
   }
 }
