@@ -1,0 +1,23 @@
+.start {
+  background-size: cover;
+  background-position: center;
+  background-image: url(../../images/hero.jpg);
+  height: 10rem;
+
+  &__mask {
+    background: rgba($color-grey-dark, .5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+
+    &--header {
+      font-size: 1.5rem;
+      color: $color-white;
+    }
+
+    &--btn--container {
+    }
+  }
+}
