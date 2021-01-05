@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Logo from './Logo.component';
 
 const Navbar = ({ userStatus }) => (
   <nav className="header__logo-box">
-    <div className="header__logo">
-      <div className="header__logo-text">HF</div>
-      <div className="header__logo-name">HomeFinder</div>
-    </div>
+    <Logo />
     <div className="header-navbar__link">
       <div className="header-navbar__link--sign-in">
         <Link to={userStatus.user ? '/favourites' : '/login'}>
