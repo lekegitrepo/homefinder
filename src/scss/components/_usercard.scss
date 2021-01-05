@@ -1,0 +1,26 @@
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: .1rem .1rem .6rem;
+  margin: 2rem;
+  border-radius: .3rem;
+
+  &__image {
+    padding: 3rem;
+    img{}
+  }
+
+  &__name {
+    margin: .3rem;
+  }
+
+  &__ocupation {
+    margin: .4rem;
+  }
+
+  &__testimony {
+    margin: .5rem 1rem 2.5rem;
+  }
+}
