@@ -9,8 +9,13 @@
   max-width: 30%;
 
   &__image {
-    padding: 3rem;
-    img{}
+    margin: 3rem 3rem 1.5rem;
+    max-height: 20%;
+    max-width: 20%;
+    img{
+      width: 100%;
+      border-radius: 50%;
+    }
   }
 
   &__name {
@@ -18,7 +23,7 @@
   }
 
   &__ocupation {
-    margin: .4rem;
+    margin: .1rem;
     color: $color-grey-dark;
   }
 
