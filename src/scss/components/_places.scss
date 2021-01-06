@@ -1,15 +1,29 @@
 .places {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   height: 95vh;
-  margin: 3rem 0;
+  margin: 3rem;
+  font-family: 'Raleway';
+
   &--card-comp {
-    margin: 0 3rem 0;
-    width: 50%;
+    margin: 0 0 3rem 0;
+    width: 40%;
     height: 70%;
   }
 
   &--description {
-    width: 50%;
+    width: 60%;
+
+    &__header {
+      font-size: 3rem;
+      color: $color-grey-dark-3;
+      margin-bottom: 2rem;
+    }
+
+    &__text {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      margin-bottom: 3rem;
+    }
   }
 }

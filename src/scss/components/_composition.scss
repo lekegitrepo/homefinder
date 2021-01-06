@@ -17,7 +17,7 @@
     }
 
       &--c1 {
-        left: -2%;
+        left: 3rem;
         top: -.5rem;
 
         @include respond(tab-port)  {
@@ -27,7 +27,7 @@
       }
 
       &--c2 {
-        left: 6rem;
+        right: 18%;
         top: .05rem;
 
         @include respond(tab-port)  {
@@ -38,7 +38,7 @@
       }
 
       &--c3 {
-        left: 5%;
+        left: 18%;
         top: .5rem;
 
         @include respond(tab-port)  {
