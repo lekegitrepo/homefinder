@@ -2,7 +2,6 @@
   position: relative;
 
   &__card {
-    // width: 55%;
     box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
     border-radius: 2px;
     position: absolute;
@@ -18,8 +17,8 @@
     }
 
       &--c1 {
-        left: 0;
-        top: -1rem;
+        left: -2%;
+        top: -.5rem;
 
         @include respond(tab-port)  {
           top: 0;
@@ -28,8 +27,8 @@
       }
 
       &--c2 {
-        right: 8rem;
-        top: 1rem;
+        left: 6rem;
+        top: .05rem;
 
         @include respond(tab-port)  {
           top: -1rem;
@@ -40,7 +39,7 @@
 
       &--c3 {
         left: 5%;
-        top: 4rem;
+        top: .5rem;
 
         @include respond(tab-port)  {
           top: 1rem;
