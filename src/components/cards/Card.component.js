@@ -24,20 +24,27 @@ const Card = ({
         />
       </div>
       <div className="card__detail">
-        <div className="card__detail__title">{ home_type }</div>
-        <div className="card__detail__description">{ description }</div>
-        <div className="card__detail__address">{ location }</div>
-        <div className="card__detail__price">{ price }</div>
-        {currentUser.loggedIn === true
-          ? (
-            <FavButton
-              id={id}
-              icon="icon"
-              picked={false}
-              userObj={currentUser}
-            />
-          )
-          : ''}
+        <div className="card__detail__container">
+          <div className="card__detail__title">{ home_type }</div>
+          <div className="card__detail__description">{ description }</div>
+          <div className="card__detail__address">{ location }</div>
+          <div className="card__detail__btn">
+            {currentUser.loggedIn === true
+              ? (
+                <FavButton
+                  id={id}
+                  icon="icon"
+                  picked={false}
+                  userObj={currentUser}
+                />
+              )
+              : ''}
+          </div>
+        </div>
+        <div className="card__detail__price">
+          { price }
+          <span>per month</span>
+        </div>
       </div>
     </div>
   );

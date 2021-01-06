@@ -3,6 +3,7 @@
   width: 200px;
   height: 300px;
   min-height: 15rem;
+
   &__image {
     width: 100%;
     height: 85%;
@@ -13,12 +14,26 @@
   }
 
   &__detail {
-    &__title {}
+    display: flex;
+    padding: .5rem;
+
+    &__container {
+      width: 75%;
+    }
+
+    &__title {
+      font-weight: bolder;
+      font-size: 1rem;
+    }
 
     &__description {}
 
     &__address {}
 
-    &__price {}
+    &__price {
+      display: flex;
+      flex-direction: column;
+      font-size: .8rem;
+    }
   }
 }

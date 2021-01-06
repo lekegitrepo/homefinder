@@ -10,7 +10,7 @@ const Places = () => {
     {
       id: 1,
       home_type: 'Apartment',
-      description: '',
+      description: 'This is a beautiful house',
       image_link: `${img1}`,
       location: '',
     },
