@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import FavButton from '../button/FavouriteButton';
 
-const Card = ({ detail, local, cssClass }) => {
+const Card = ({
+  detail, local, cssClass, price,
+}) => {
   const {
     id, home_type, description, image_link, location,
   } = detail;
@@ -15,19 +17,17 @@ const Card = ({ detail, local, cssClass }) => {
 
   return (
     <div className={cssClass.length > 0 ? cssClass : 'card'}>
-      <h1>{ home_type }</h1>
-      <div>
+      <div className="card__image">
         <img
           src={local === true ? image_link : `https://homefinderapi.herokuapp.com/${image_link}`}
           alt="house"
-          style={{ width: '200px', height: '200px' }}
         />
       </div>
-      <div>
-        <div>{ id }</div>
-        <div>{ home_type }</div>
-        <div>{ description }</div>
-        <div>{ location }</div>
+      <div className="card__detail">
+        <div className="card__detail__title">{ home_type }</div>
+        <div className="card__detail__description">{ description }</div>
+        <div className="card__detail__address">{ location }</div>
+        <div className="card__detail__price">{ price }</div>
         {currentUser.loggedIn === true
           ? (
             <FavButton
@@ -47,12 +47,14 @@ Card.defaultProps = {
   detail: {},
   local: false,
   cssClass: '',
+  price: '$0.00',
 };
 
 Card.propTypes = {
   detail: PropTypes.instanceOf(Object),
   local: PropTypes.bool,
   cssClass: PropTypes.string,
+  price: PropTypes.number,
 };
 
 export default Card;

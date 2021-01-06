@@ -36,17 +36,17 @@ const Places = () => {
         <Card
           detail={details[0]}
           local
-          cssClass="composition__card composition__card--c1"
+          cssClass="composition__card composition__card--c1 card"
         />
         <Card
           detail={details[1]}
           local
-          cssClass="composition__card composition__card--c2"
+          cssClass="composition__card composition__card--c2 card"
         />
         <Card
           detail={details[2]}
           local
-          cssClass="composition__card composition__card--c3"
+          cssClass="composition__card composition__card--c3 card"
         />
       </div>
       <div className="places--description">
