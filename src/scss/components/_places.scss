@@ -1,0 +1,15 @@
+.places {
+  display: flex;
+  justify-content: space-between;
+  height: 95vh;
+  margin: 3rem 0;
+  &--card-comp {
+    margin: 0 3rem 0;
+    width: 50%;
+    height: 70%;
+  }
+
+  &--description {
+    width: 50%;
+  }
+}
