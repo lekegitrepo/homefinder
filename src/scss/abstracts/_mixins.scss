@@ -1,11 +1,4 @@
-@mixin absCenter {
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
- // 1em = 16px
+// 1em = 16px
 
 @mixin respond($breakpoint) {
   @if $breakpoint == phone {

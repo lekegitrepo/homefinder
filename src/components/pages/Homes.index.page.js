@@ -21,13 +21,17 @@ const Homes = () => {
   }, [setList]);
 
   return (
-    <section>
-      <h1>List of Houses for rent</h1>
-      {
-        (list.length === 0)
-          ? <h3>No Rent House Available</h3>
-          : list.homes.map(item => <Card key={v4()} detail={item} />)
-      }
+    <section className="home-list">
+      <div className="home-list__header">
+        <h3 className="heading-secondary">List of Houses for rent</h3>
+      </div>
+      <div className="home-list__row">
+        {
+          (list.length === 0)
+            ? <h3>No Rent House Available</h3>
+            : list.homes.map(item => <Card key={v4()} detail={item} />)
+        }
+      </div>
       <Link to="/">
         Back to Home page
       </Link>
