@@ -54,7 +54,7 @@ const Registration = () => {
         <section className="form-section">
           <div className="form-section__mask">
             <form onSubmit={handleSubmit} className="form">
-              <div className="u-margin-bottom-medium">
+              <div className="u-margin-bottom-small">
                 <h2 className="heading-secondary">
                   Registration
                 </h2>
