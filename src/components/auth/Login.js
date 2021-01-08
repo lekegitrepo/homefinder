@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -45,21 +47,67 @@ const Login = () => {
       </h1>
     )
       : (
-        <section className="registration-form">
-          <form onSubmit={handleSubmit}>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={state.email}
-              onChange={handleChange}
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-              required
-            />
-            <input type="password" name="password" placeholder="Password" value={state.password} onChange={handleChange} required />
+        <section className="form-section">
+          <div className="form-section__mask">
+            <form onSubmit={handleSubmit} className="form login">
+              <div className="u-margin-bottom-small">
+                <h2 className="heading-secondary">
+                  Login
+                </h2>
+              </div>
 
-            <button type="submit"> Register </button>
-          </form>
+              <div className="form__group">
+                <input
+                  type="email"
+                  name="email"
+                  className="form__input"
+                  id="email"
+                  placeholder="Email"
+                  value={state.email}
+                  onChange={handleChange}
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                  required
+                />
+                <label htmlFor="email" className="form__label">Email</label>
+              </div>
+              {/* <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={state.email}
+                onChange={handleChange}
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                required
+              /> */}
+
+              <div className="form__group">
+                <input
+                  type="password"
+                  name="password"
+                  className="form__input"
+                  id="password"
+                  placeholder="Password"
+                  value={state.password}
+                  onChange={handleChange}
+                  required
+                />
+                <label htmlFor="password" className="form__label">Password</label>
+              </div>
+              {/* <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={state.password}
+                    onChange={handleChange}
+                    required
+                  />
+              */}
+
+              <div className="form__group form-btn">
+                <button type="submit"> Sign In </button>
+              </div>
+            </form>
+          </div>
         </section>
       )
   );
