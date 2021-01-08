@@ -1,4 +1,6 @@
 /* eslint-disable camelcase */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+
 import React, { useState /* useEffect */ } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -50,35 +52,62 @@ const Registration = () => {
     )
       : (
         <section className="registration-form">
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="fullname"
-              placeholder="Full Name"
-              value={state.fullname}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={state.email}
-              onChange={handleChange}
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-              required
-            />
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              value={state.username}
-              onChange={handleChange}
-            />
-            <input type="password" name="password" placeholder="Password" value={state.password} onChange={handleChange} required />
-            <input type="password" name="password_confirmation" placeholder="Password Confirmation" value={state.password_confirmation} onChange={handleChange} required />
+          <form onSubmit={handleSubmit} className="form">
+            <div className="u-margin-bottom-medium">
+              <h2 className="heading-secondary">
+                Registration
+              </h2>
+            </div>
 
-            <button type="submit"> Register </button>
+            <div className="form__group">
+              <input
+                type="text"
+                className="form__input"
+                id="fname"
+                name="fullname"
+                placeholder="Full Name"
+                value={state.fullname}
+                onChange={handleChange}
+                required
+              />
+              <label htmlFor="fname" className="form__label">Full name</label>
+            </div>
+            <div className="form__group">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                value={state.email}
+                onChange={handleChange}
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                required
+              />
+              <label htmlFor="email" className="form__label">Email</label>
+            </div>
+            <div className="form__group">
+              <input
+                type="text"
+                name="username"
+                id="uname"
+                placeholder="Username"
+                value={state.username}
+                onChange={handleChange}
+              />
+              <label htmlFor="uname" className="form__label">Username</label>
+            </div>
+            <div className="form__group">
+              <input type="password" name="password" id="password" placeholder="Password" value={state.password} onChange={handleChange} required />
+              <label htmlFor="password" className="form__label">Password</label>
+            </div>
+            <div className="form__group">
+              <input type="password" name="password_confirmation" id="pass_confirmation" placeholder="Password Confirmation" value={state.password_confirmation} onChange={handleChange} required />
+              <label htmlFor="pass_confirmation" className="form__label">Password Confirmation</label>
+            </div>
+
+            <div className="form__group">
+              <button type="submit"> Register </button>
+            </div>
           </form>
         </section>
       )
