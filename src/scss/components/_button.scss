@@ -7,4 +7,17 @@
   padding: 1rem 3rem;
   font-family: 'Open Sans';
   font-weight: bold;
+
+  &-like {
+    border: none;
+    background-color: transparent;
+    color: $color-secondary-dark;
+    margin: .5rem;
+    cursor: pointer;
+    outline: none;
+  }
+
+  &-like:hover {
+    opacity: .5;
+  }
 }

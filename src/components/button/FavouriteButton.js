@@ -50,7 +50,7 @@ const FavButton = ({ id, picked, userObj }) => {
     <button
       type="submit"
       onClick={handleClick(state)}
-      className={state === true ? 'filled' : 'unfilled'}
+      className="btn-like"
     >
       { state === false ? <i className="far fa-heart" /> : <i className="fas fa-heart" /> }
     </button>
