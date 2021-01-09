@@ -37,6 +37,20 @@
   }
 }
 
+@include respond(tab-port) {
+  .card {
+    margin: 7rem 1rem;
+    padding: 2rem 0;
+
+    &__image {
+      img {
+        width: 100%;
+        max-height: 500px;
+      }
+    }
+  }
+}
+
 @include respond(tab-land) {
   .card {
     flex: 0 1 calc(50% - 1em);

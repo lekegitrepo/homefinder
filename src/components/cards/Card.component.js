@@ -7,9 +7,7 @@ import FavButton from '../button/FavouriteButton';
 const Card = ({
   detail, local, cssClass, price,
 }) => {
-  const {
-    id, home_type, description, image_link, location,
-  } = detail;
+  const { id, home_type, image_link } = detail;
 
   console.log(cssClass);
 
@@ -26,14 +24,11 @@ const Card = ({
       <div className="card__detail">
         <div className="card__detail__container">
           <div className="card__detail__title">{ home_type }</div>
-          <div className="card__detail__description">{ description }</div>
-          <div className="card__detail__address">{ location }</div>
           <div className="card__detail__btn">
             {currentUser.loggedIn === true
               ? (
                 <FavButton
                   id={id}
-                  icon="icon"
                   picked={false}
                   userObj={currentUser}
                 />

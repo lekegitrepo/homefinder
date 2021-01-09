@@ -5,9 +5,7 @@ import PropTypes from 'prop-types';
 import { postFavouriteHomeRequest, deleteFavouriteHomeRequest } from '../../services/apiRequests.services';
 import actions from '../../actions/index.actions';
 
-const FavButton = ({
-  id, icon, picked, userObj,
-}) => {
+const FavButton = ({ id, picked, userObj }) => {
   const dispatch = useDispatch();
   const [state, setState] = useState(picked);
   const favourite = useSelector(state => state.favouriteHomes);
@@ -54,25 +52,19 @@ const FavButton = ({
       onClick={handleClick(state)}
       className={state === true ? 'filled' : 'unfilled'}
     >
-      { state === false ? `Add ${icon}` : `Remove ${icon}` }
+      { state === false ? <i className="far fa-heart" /> : <i className="fas fa-heart" /> }
     </button>
   );
 };
 
 FavButton.defaultProps = {
   id: 0,
-  icon: <i />,
   picked: false,
   userObj: {},
 };
 
 FavButton.propTypes = {
   id: PropTypes.number,
-  icon: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.elementType,
-    PropTypes.string,
-  ]),
   picked: PropTypes.bool,
   userObj: PropTypes.instanceOf(Object),
 };
