@@ -69,6 +69,12 @@
     div.btn-container {
       margin-top: 3rem;
     }
+
+    @include respond(tab-port) {
+      h3, p {
+        width: 100%;
+      }
+    }
   }
 }
 
