@@ -4,7 +4,13 @@
   justify-content: center;
   align-items: center;
 
-  &__logo--container {}
+  &__logo--container {
+    .logo {
+      &-link {
+        color: $color-black;
+      }
+    }
+  }
 
   p {
     display: flex;

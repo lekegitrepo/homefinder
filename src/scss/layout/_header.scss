@@ -13,27 +13,11 @@
     top: 4rem;
     left: 4rem;
     width: 100%;
-  }
 
-  &__logo {
-    display: flex;
-
-    &-text {
-      background: linear-gradient(
-        to right bottom,
-        rgba($color-secondary-light, 0.8),
-        rgba($color-secondary-dark, 0.8));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-
-      font-size: 4rem;
-      padding: .5rem .6rem .5rem 0;
-    }
-
-    &-name {
-      align-self: center;
-      font-weight: bolder;
-      font-size: large;
+    .logo {
+      &-link {
+        color: $color-white;
+      }
     }
   }
 
@@ -85,5 +69,30 @@
     div.btn-container {
       margin-top: 3rem;
     }
+  }
+}
+
+.logo {
+
+  &-link {
+    display: flex;
+  }
+
+  &-text {
+    background: linear-gradient(
+      to right bottom,
+      rgba($color-secondary-light, 0.8),
+      rgba($color-secondary-dark, 0.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-size: 4rem;
+    padding: .5rem .6rem .5rem 0;
+  }
+
+  &-name {
+    align-self: center;
+    font-weight: bolder;
+    font-size: large;
   }
 }
