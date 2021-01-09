@@ -35,4 +35,9 @@
     line-height: 1.3rem;
     color: $color-grey-dark-3;
   }
+
+  @include respond(tab-port) {
+    max-width: 90%;
+    width: 70%;
+  }
 }
