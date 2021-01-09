@@ -36,6 +36,29 @@
       }
     }
 
-    &--image {}
+    @include respond(tab-port) {
+      flex-direction: column-reverse;
+
+      &--description {
+        &__header, &__text, &__btn {
+          text-align: center;
+        }
+      }
+
+      &--image {
+        text-align: center;
+        img {
+          width: 80%;
+        }
+      }
+    }
+
+    @include respond(phone) {
+      &--image {
+        img {
+          width: 100%;
+        }
+      }
+    }
   }
 }
