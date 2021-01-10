@@ -3,10 +3,6 @@ const addFavourite = homeObj => ({
   payload: homeObj,
 });
 
-const allFavourites = () => ({
-  type: 'FETCH_FAV_HOMES',
-});
-
 const selectFavourites = () => ({
   type: 'SELECT_FAV_HOMES',
 });
@@ -17,5 +13,5 @@ const removeFavourite = homeObj => ({
 });
 
 export default {
-  addFavourite, removeFavourite, allFavourites, selectFavourites,
+  addFavourite, removeFavourite, selectFavourites,
 };
