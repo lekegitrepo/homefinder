@@ -27,4 +27,22 @@
       margin-bottom: 3rem;
     }
   }
+
+  @include respond(tab-land) {
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 580px;
+
+    &--card-comp {
+      margin: 0 3rem 2rem;
+      width: 60%;
+      height: 100%;
+      min-height: 20rem;
+    }
+
+    &--description {
+      margin-top: 3rem;
+      width: 100%;
+    }
+  }
 }
