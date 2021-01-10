@@ -37,7 +37,9 @@ const Card = ({
           </div>
         </div>
         <div className="card__detail__price">
+          `
           { price }
+          `
           <span>per month</span>
         </div>
       </div>
@@ -49,7 +51,7 @@ Card.defaultProps = {
   detail: {},
   local: false,
   cssClass: '',
-  price: '$0.00',
+  price: 0.0,
 };
 
 Card.propTypes = {
