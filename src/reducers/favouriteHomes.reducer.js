@@ -8,6 +8,8 @@ const favouriteHomes = (state = [], action) => {
           picked: true,
         },
       ];
+    case 'ALL_FAV_HOMES':
+      return [...state];
     case 'REMOVE_HOME':
       return state.filter(item => item.homeId !== action.payload.id);
     default:
