@@ -6,6 +6,14 @@ import { postFavouriteHomeRequest, deleteFavouriteHomeRequest } from '../../serv
 import actions from '../../actions/index.actions';
 
 const FavButton = ({ id, picked, userObj }) => {
+  /* let currentValue;
+  if (picked === null) {
+    currentValue = false;
+  } else if (picked === false) {
+    currentValue = false;
+  } else {
+    currentValue = true;
+  } */
   const dispatch = useDispatch();
   const [state, setState] = useState(picked);
   const favourite = useSelector(state => state.favouriteHomes);

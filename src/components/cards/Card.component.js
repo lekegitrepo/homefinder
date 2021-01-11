@@ -8,8 +8,7 @@ const Card = ({
   detail, local, cssClass, price,
 }) => {
   const { id, home_type, image_link } = detail;
-
-  console.log(cssClass);
+  // console.log('This is the detail:', detail);
 
   const currentUser = useSelector(state => state.currentUser);
 
@@ -29,7 +28,7 @@ const Card = ({
               ? (
                 <FavButton
                   id={id}
-                  picked={false}
+                  picked={detail.picked}
                   userObj={currentUser}
                 />
               )
@@ -37,9 +36,8 @@ const Card = ({
           </div>
         </div>
         <div className="card__detail__price">
-          `
+          $
           { price }
-          `
           <span>per month</span>
         </div>
       </div>

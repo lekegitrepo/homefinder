@@ -29,7 +29,7 @@ const Places = () => {
       location: '',
     },
   ];
-  console.log(details);
+  // console.log(details);
   return (
     <section className="places p-auto">
       <div className="places--card-comp composition">

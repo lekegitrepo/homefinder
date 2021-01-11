@@ -12,6 +12,7 @@ const Homes = () => {
     getHomesListRequest('homes').then(response => {
       if (response.statusText === 'OK') {
         setList(response.data);
+        console.log('This is the response:', response.data);
       } else {
         console.log('todo populate registration error');
       }
@@ -29,7 +30,7 @@ const Homes = () => {
         {
           (list.length === 0)
             ? <h3>No Rent House Available</h3>
-            : list.homes.map(item => <Card key={v4()} detail={item} />)
+            : list.homes.map(item => <Card key={v4()} detail={item} price={item.price} />)
         }
       </div>
       <Link to="/">
