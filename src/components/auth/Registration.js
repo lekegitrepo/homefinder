@@ -4,7 +4,7 @@
 import React, { useState /* useEffect */ } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-// import axios from 'axios';
+import Navbar from '../Navbar.component';
 import actions from '../../actions/index.actions';
 import { postFormRequest } from '../../services/apiRequests.services';
 
@@ -52,6 +52,7 @@ const Registration = () => {
     )
       : (
         <section className="form-section">
+          <Navbar />
           <div className="form-section__mask">
             <form onSubmit={handleSubmit} className="form">
               <div className="u-margin-bottom-small">

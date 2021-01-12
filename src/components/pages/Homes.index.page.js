@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
 import { getHomesListRequest } from '../../services/apiRequests.services';
 import Card from '../cards/Card.component';
+import Navbar from '../Navbar.component';
 
 const Homes = () => {
   const [list, setList] = useState([]);
@@ -23,6 +24,7 @@ const Homes = () => {
 
   return (
     <section className="home-list">
+      <Navbar />
       <div className="home-list__header">
         <h3 className="heading-secondary">List of Houses for rent</h3>
       </div>

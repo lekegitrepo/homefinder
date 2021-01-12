@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import actions from '../../actions/index.actions';
 import { postFormRequest } from '../../services/apiRequests.services';
+import Navbar from '../Navbar.component';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ const Login = () => {
     )
       : (
         <section className="form-section">
+          <Navbar />
           <div className="form-section__mask">
             <form onSubmit={handleSubmit} className="form login">
               <div className="u-margin-bottom-small">

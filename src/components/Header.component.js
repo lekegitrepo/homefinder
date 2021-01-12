@@ -6,7 +6,7 @@ import Button from './button/Button';
 
 const Header = ({ user }) => (
   <header className="header">
-    <Navbar userStatus={user} />
+    <Navbar />
     <section className="header__text-box">
       <h3>Find Housing anywhere</h3>
       <p>
