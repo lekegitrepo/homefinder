@@ -13,13 +13,13 @@ const FavouriteHomes = () => {
   const currentUser = useSelector(state => state.currentUser);
   const favouriteHomes = useSelector(state => state.favouriteHomes);
   console.log('This is favouriteHomes state outside:', favouriteHomes);
-  const [list, setList] = useState([]);
+  const [list, setList] = useState({ favourites: [] });
   console.log('This is List outside:', list);
 
   const fetchFavourites = async () => {
     await getFavouriteHomesRequest('favourites', currentUser.user.auth_token).then(res => {
       if (res.statusText === 'OK') {
-        setList(res.data);
+        setList({ favourites: res.data.favourites });
         dispatch(actions.homeActions.selectAllFavourites(res.data.favourites));
         // console.log('This is the res from favouriteHomes:', res.data.favourites);
         // console.log('This is the List:', list);
@@ -46,7 +46,7 @@ const FavouriteHomes = () => {
       </div>
       <div className="home-list__row">
         {
-          (list.length === 0)
+          (list.favourites.length === 0)
             ? <h3>No Favourite Houses</h3>
             : list.favourites.map(item => <Card key={v4()} detail={item} likeButton={false} />)
         }
