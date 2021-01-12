@@ -1,17 +1,13 @@
-const favouriteHomes = (state = [], action) => {
+const favouriteHomes = (state = { favourites: [] }, action) => {
+  // console.log('This is state object from reducer 1:', state);
   switch (action.type) {
     case 'ADD_HOME':
-      return [...state,
-        {
-          fav: action.payload.obj,
-          homeId: action.payload.homeId,
-          picked: true,
-        },
-      ];
+      return { ...state, favourites: [...state.favourites, action.payload] };
     case 'ALL_FAV_HOMES':
-      return [...state];
+      console.log('This is state object from reducer 2:', { ...state, favourites: [...action.payload] });
+      return { ...state, favourites: [...action.payload] };
     case 'REMOVE_HOME':
-      return state.filter(item => item.homeId !== action.payload.id);
+      return state.favourites.filter(item => item.id !== action.payload.id);
     default:
       return state;
   }

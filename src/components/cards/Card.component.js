@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import FavButton from '../button/FavouriteButton';
 
 const Card = ({
-  detail, local, cssClass, price,
+  detail, local, cssClass, price, likeButton,
 }) => {
   const { id, home_type, image_link } = detail;
   // console.log('This is the detail:', detail);
@@ -24,7 +24,7 @@ const Card = ({
         <div className="card__detail__container">
           <div className="card__detail__title">{ home_type }</div>
           <div className="card__detail__btn">
-            {currentUser.loggedIn === true
+            {currentUser.loggedIn === true && likeButton === true
               ? (
                 <FavButton
                   id={id}
@@ -50,6 +50,7 @@ Card.defaultProps = {
   local: false,
   cssClass: '',
   price: 0.0,
+  likeButton: true,
 };
 
 Card.propTypes = {
@@ -57,6 +58,7 @@ Card.propTypes = {
   local: PropTypes.bool,
   cssClass: PropTypes.string,
   price: PropTypes.number,
+  likeButton: PropTypes.bool,
 };
 
 export default Card;

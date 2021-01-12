@@ -12,7 +12,7 @@ const Homes = () => {
     getHomesListRequest('homes').then(response => {
       if (response.statusText === 'OK') {
         setList(response.data);
-        console.log('This is the response:', response.data);
+        // console.log('This is the response:', response.data);
       } else {
         console.log('todo populate registration error');
       }

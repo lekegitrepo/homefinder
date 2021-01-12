@@ -7,8 +7,9 @@ const selectFavourites = () => ({
   type: 'SELECT_FAV_HOMES',
 });
 
-const selectAllFavourites = () => ({
+const selectAllFavourites = favObj => ({
   type: 'ALL_FAV_HOMES',
+  payload: favObj,
 });
 
 const removeFavourite = homeObj => ({

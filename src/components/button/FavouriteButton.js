@@ -1,47 +1,40 @@
 /* eslint-disable camelcase */
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch /* useSelector */ } from 'react-redux';
 import PropTypes from 'prop-types';
 import { postFavouriteHomeRequest, deleteFavouriteHomeRequest } from '../../services/apiRequests.services';
 import actions from '../../actions/index.actions';
 
 const FavButton = ({ id, picked, userObj }) => {
-  /* let currentValue;
-  if (picked === null) {
-    currentValue = false;
-  } else if (picked === false) {
-    currentValue = false;
-  } else {
-    currentValue = true;
-  } */
   const dispatch = useDispatch();
   const [state, setState] = useState(picked);
-  const favourite = useSelector(state => state.favouriteHomes);
+  // const favourite = useSelector(state => state.favouriteHomes);
   const { user } = userObj;
+  // console.log('This is favourite from FavouriteButton:', favourite);
 
   const handleCreateFavourite = () => postFavouriteHomeRequest('favourites', { id }, user.auth_token).then(resp => {
     if (resp.statusText === 'Created') {
       setState(!state);
-      const dis = dispatch(actions.homeActions.addFavourite({
-        obj: resp.data,
-        homeId: id,
-      })); // homeId: resp.data.favourites.id,
-      console.log('This is a favourite home:', favourite);
-      console.log(resp);
-      console.log('This is state and dispatch:', state, dis);
+      // console.log('This is resp:', resp);
+      dispatch(
+        actions.homeActions.addFavourite(resp.data.favourites),
+      ); // homeId: resp.data.favourites.id,
+      // console.log('This is a favourite home:', favourite);
+      // console.log('This is state and dispatch:', state, dis);
     }
   }).catch(err => {
     console.log('Unable to add home as the favourite', err);
   });
 
-  const fetchFavouriteHome = (list, homeId) => {
-    const id = list.filter(home => home.homeId === homeId);
+  /* const fetchFavouriteHome = (list, homeId) => {
+    const id = list.favourites.filter(home => home.homeId === homeId);
+    console.log('This is from fetchFavouriteHome:', id);
     return id[0].fav.favourites.id;
-  };
+  }; */
 
   const handleRemoveFavourite = () => {
-    const favId = fetchFavouriteHome(favourite, id);
-    deleteFavouriteHomeRequest('remove_fav', { id: favId }, user.auth_token).then(resp => {
+    // const favId = fetchFavouriteHome(favourite, id);
+    deleteFavouriteHomeRequest('remove_fav', { id }, user.auth_token).then(resp => {
       if (resp.statusText === 'No Content') {
         setState(!state);
         dispatch(actions.homeActions.removeFavourite({ id }));
