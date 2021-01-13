@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import FavButton from '../button/FavouriteButton';
 
@@ -15,10 +16,12 @@ const Card = ({
   return (
     <div className={cssClass.length > 0 ? cssClass : 'card'}>
       <div className="card__image">
-        <img
-          src={local === true ? image_link : `https://homefinderapi.herokuapp.com/${image_link}`}
-          alt="house"
-        />
+        <Link to={cssClass.length > 0 ? '/' : `/home/${id}`}>
+          <img
+            src={local === true ? image_link : `https://homefinderapi.herokuapp.com/${image_link}`}
+            alt="house"
+          />
+        </Link>
       </div>
       <div className="card__detail">
         <div className="card__detail__container">
