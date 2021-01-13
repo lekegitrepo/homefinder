@@ -28,7 +28,7 @@
       display: flex;
       justify-content: center;
 
-      a {
+      a, button {
         background-color: rgba($color-grey-dark-3, .5);
         border-radius: 3rem;
         color: $color-white;
@@ -38,9 +38,15 @@
         padding: .5rem 1.5rem;
       }
 
-      a:hover {
+      a:hover, button:hover {
         background-color: rgba($color-grey-dark-3, .2);
         color: $color-grey-light-2;
+      }
+
+      button {
+        border: none;
+        outline: none;
+        cursor: pointer;
       }
     }
   }

@@ -1,26 +1,55 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Logo from './Logo.component';
+import { userLogout } from '../services/apiRequests.services';
+import actions from '../actions/index.actions';
 
 const Navbar = ({ cssClass }) => {
+  const dispatch = useDispatch();
   const currentUser = useSelector(state => state.currentUser);
+  const [status, setStatus] = useState(currentUser.loggedIn);
   console.log('This is user Object', currentUser);
+
+  const handleLogout = () => {
+    console.log('This is user logout!');
+    if (currentUser.user) {
+      const { user } = currentUser;
+      userLogout('log_out', user.id, user.auth_token).then(res => {
+        console.log('This is the response:', res);
+        if (res.statusText === 'No Content') {
+          dispatch(actions.userActions.logout());
+          setStatus(false);
+        }
+      }).catch(err => console.log('Unsuccessful logout', err));
+    }
+  };
   return (
     <nav className={cssClass === '' ? 'header__logo-box' : `header__logo-box ${cssClass}`}>
       <Logo />
       <div className="header-navbar__link">
-        <div className="header-navbar__link--sign-in">
-          <Link to={currentUser.user ? '/favourites' : '/login'}>
-            {currentUser.user ? 'FAVOURITES' : 'SIGN IN'}
-          </Link>
-        </div>
         <div className="header-navbar__link--sign-up">
-          <Link to={currentUser.user ? '/homes' : '/registration'}>
-            {currentUser.user ? 'HOMES' : 'SIGN UP'}
+          <Link to={(status === true) ? '/homes' : '/registration'}>
+            {(status === true) ? 'HOMES' : 'SIGN UP'}
           </Link>
         </div>
+        <div className="header-navbar__link--sign-in">
+          <Link to={(status === true) ? '/favourites' : '/login'}>
+            {(status === true) ? 'FAVOURITES' : 'SIGN IN'}
+          </Link>
+        </div>
+        {
+          (status === true)
+            ? (
+              <div className="header-navbar__link--sign-in">
+                <button type="submit" onClick={handleLogout}>
+                  {(status === true) ? 'LOGOUT' : 'SIGN IN'}
+                </button>
+              </div>
+            )
+            : ''
+        }
       </div>
     </nav>
   );
