@@ -40,3 +40,12 @@ export const deleteFavouriteHomeRequest = (reqUrl, id, auth = '') => axios.delet
   })
   .then(resp => resp)
   .catch(error => error);
+
+export const userLogout = (reqUrl, id, auth = '') => axios.delete(`${API_BASE_URL}/${reqUrl}/`,
+  {
+    headers: { Authenticate: auth },
+    data: id,
+    withCredentials: true,
+  })
+  .then(resp => resp)
+  .catch(error => error);
