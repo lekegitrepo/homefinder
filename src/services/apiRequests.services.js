@@ -1,8 +1,12 @@
 import axios from 'axios';
 
 // API Endpoints
-// const API_BASE_URL = 'https://homefinderapi.herokuapp.com/api/v1';
-const API_BASE_URL = 'http://localhost:3001/api/v1';
+const API_BASE_URL = 'https://homefinderapi.herokuapp.com/api/v1';
+
+/* Uncomment the code below to use a local rails server on port 3001
+with this command rails s -p 3001 and remember to comment out
+the above code to avoid error */
+// const API_BASE_URL = 'http://localhost:3001/api/v1';
 
 export const postFormRequest = (reqUrl, userData) => axios.post(`${API_BASE_URL}/${reqUrl}`,
   userData,
