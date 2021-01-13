@@ -24,7 +24,7 @@ const Homes = () => {
 
   return (
     <section className="home-list">
-      <Navbar />
+      <Navbar cssClass="u-padding-left" />
       <div className="home-list__header">
         <h3 className="heading-secondary">List of Houses for rent</h3>
       </div>

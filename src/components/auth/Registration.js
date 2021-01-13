@@ -52,8 +52,8 @@ const Registration = () => {
     )
       : (
         <section className="form-section">
-          <Navbar />
           <div className="form-section__mask">
+            <Navbar cssClass="u-padding-left" />
             <form onSubmit={handleSubmit} className="form">
               <div className="u-margin-bottom-small">
                 <h2 className="heading-secondary">

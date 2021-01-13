@@ -1,14 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Logo from './Logo.component';
 
-const Navbar = () => {
+const Navbar = ({ cssClass }) => {
   const currentUser = useSelector(state => state.currentUser);
   console.log('This is user Object', currentUser);
   return (
-    <nav className="header__logo-box">
+    <nav className={cssClass === '' ? 'header__logo-box' : `header__logo-box ${cssClass}`}>
       <Logo />
       <div className="header-navbar__link">
         <div className="header-navbar__link--sign-in">
@@ -26,12 +26,12 @@ const Navbar = () => {
   );
 };
 
-/* Navbar.defaultProps = {
-  userStatus: {},
+Navbar.defaultProps = {
+  cssClass: '',
 };
 
 Navbar.propTypes = {
-  userStatus: PropTypes.instanceOf(Object),
-}; */
+  cssClass: PropTypes.string,
+};
 
 export default Navbar;
