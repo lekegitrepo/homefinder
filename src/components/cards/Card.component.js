@@ -16,7 +16,7 @@ const Card = ({
   return (
     <div className={cssClass.length > 0 ? cssClass : 'card'}>
       <div className="card__image">
-        <Link to={cssClass.length > 0 ? '/' : `/home/${id}`}>
+        <Link to={{ pathname: cssClass.length > 0 ? '/' : `/home/${id}`, state: detail }}>
           <img
             src={local === true ? image_link : `https://homefinderapi.herokuapp.com/${image_link}`}
             alt="house"

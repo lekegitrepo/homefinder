@@ -11,6 +11,12 @@
     margin: 0 1rem;
   }
 
+  /*&__row::after {
+    content: "";
+    flex: auto;
+    padding-right: 1rem;
+  }*/
+
   @include respond(tab-port) {
     &__row {
       display: flex;
@@ -18,5 +24,26 @@
       flex-wrap: wrap;
       flex-direction: column;
     }
+  }
+}
+
+.home {
+  &__header {
+    text-align: center;
+    h3 {
+      font-size: 3rem;
+    }
+  }
+  &__image {
+    margin: 1rem 4rem 4rem;
+    position: relative;
+    img {
+      width: 100%;
+    }
+  }
+  &__like__btn {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
   }
 }
