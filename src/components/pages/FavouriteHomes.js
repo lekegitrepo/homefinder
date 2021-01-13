@@ -40,7 +40,7 @@ const FavouriteHomes = () => {
 
   return (
     <section className="home-list">
-      <Navbar cssClass="u-padding-left" />
+      <Navbar cssClass="u-padding-left u-bg-color" />
       <div className="home-list__header">
         <h3 className="heading-secondary">List of your Favourite Houses</h3>
       </div>
