@@ -23,7 +23,13 @@ const HomeDetail = () => {
       </div>
       <div className="home">
         <div className="home__header">
-          <h3 className="heading-secondary">{ home_type }</h3>
+          <h3 className="heading-secondary">
+            { home_type }
+            :
+            $
+            { price }
+            <span> per month</span>
+          </h3>
         </div>
         <div className="home__image">
           <img
@@ -44,14 +50,19 @@ const HomeDetail = () => {
         </div>
         <div className="home__detail">
           <div className="home__detail__container">
-            <div className="home__detail__description">{ description }</div>
-            <div className="home__detail__location">{ location }</div>
+            <div className="home__detail__description">
+              <strong>Description: </strong>
+              <span>
+                { description }
+              </span>
+            </div>
+            <div className="home__detail__location">
+              <strong>Address: </strong>
+              <span>
+                { location }
+              </span>
+            </div>
           </div>
-        </div>
-        <div className="home__detail__price">
-          $
-          { price }
-          <span>per month</span>
         </div>
       </div>
     </section>
