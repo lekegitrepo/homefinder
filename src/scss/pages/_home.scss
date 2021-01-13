@@ -6,7 +6,7 @@
 
   &__row {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     flex-wrap: wrap;
     margin: 0 1rem;
   }
@@ -45,5 +45,20 @@
     position: absolute;
     bottom: 2%;
     right: 2%;
+
+    button {
+      font-size: 4rem;
+    }
+  }
+
+  &__detail {
+    margin: 0 4rem 2rem;
+    &__description, &__location {
+      font-size: 1.3rem;
+    }
+
+    &__location {
+      margin-top: 1rem;
+    }
   }
 }
