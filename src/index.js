@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import PageRouter from './containers/pageRouter.container';
 import reportWebVitals from './reportWebVitals';
 

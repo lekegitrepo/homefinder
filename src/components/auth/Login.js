@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import Loader from 'react-loader-spinner';
 import actions from '../../actions/index.actions';
 import { postFormRequest } from '../../services/apiRequests.services';
 import Navbar from '../Navbar.component';
@@ -41,7 +42,11 @@ const Login = () => {
 
   return (
     status.loading === true
-      ? (<h1> Submitting form... </h1>)
+      ? (
+        <div className="loader">
+          <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+        </div>
+      )
       : (
         <section className="form-section">
           <div className="form-section__mask">
