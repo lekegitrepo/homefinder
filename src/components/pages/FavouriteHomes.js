@@ -1,18 +1,19 @@
 /* eslint-disable camelcase */
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+// import React, { useState, useEffect } from 'react';
+import { useSelector/* , useDispatch */ } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
-import { getFavouriteHomesRequest } from '../../services/apiRequests.services';
+// import { getFavouriteHomesRequest } from '../../services/apiRequests.services';
 import Card from '../cards/Card.component';
 import Navbar from '../Navbar.component';
-import actions from '../../actions/index.actions';
+// import actions from '../../actions/index.actions';
 
 const FavouriteHomes = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const currentUser = useSelector(state => state.currentUser);
-  // const favouriteHomes = useSelector(state => state.favouriteHomes);
-  const [list, setList] = useState({ favourites: [] });
+  const list = useSelector(state => state.favouriteHomes);
+  // const [list, setList] = useState(favouriteHomes);
+  // console.log('This is favourite Homes current state:', favouriteHomes);
 
   if (!currentUser.user) {
     return (
@@ -32,7 +33,7 @@ const FavouriteHomes = () => {
     );
   }
 
-  const fetchFavourites = async () => {
+  /* const fetchFavourites = async () => {
     await getFavouriteHomesRequest('favourites', currentUser.user.auth_token).then(res => {
       if (res.statusText === 'OK') {
         setList({ favourites: res.data.favourites });
@@ -47,7 +48,7 @@ const FavouriteHomes = () => {
 
   useEffect(() => {
     fetchFavourites();
-  }, [setList]);
+  }, [setList]); */
 
   return (
     <section className="home-list">
