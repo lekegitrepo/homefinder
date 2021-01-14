@@ -13,7 +13,6 @@ const HomeDetail = () => {
   const {
     id, description, location, home_type, image_link, price, picked,
   } = urlData.state;
-  console.log('This is location state:', urlData.state);
 
   return (
     <section>
