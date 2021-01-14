@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import Navbar from '../Navbar.component';
 import actions from '../../actions/index.actions';
 import { postFormRequest } from '../../services/apiRequests.services';
+import Error from '../Error.component';
 
 const Registration = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Registration = () => {
     password_confirmation: '',
   });
 
-  const [status, setStatus] = useState({ loading: false });
+  const [status, setStatus] = useState({ loading: false, error: false, data: '' });
 
   const handleChange = event => {
     setState(prevProps => ({
@@ -32,24 +33,20 @@ const Registration = () => {
   const handleSubmit = event => {
     setStatus({ loading: true });
     postFormRequest('sign_up', { user: { ...state } }).then(response => {
-      if (response.data.is_success === true) {
+      if (response.statusText === 'Created') {
+        console.log('This is Registration:', response);
         dispatch(actions.userActions.createUser(response.data.user));
         history.push('/');
       } else {
-        console.log('todo populate registration error');
+        setStatus({ loading: false, error: true, data: '' });
       }
-    }).catch(error => {
-      console.log('registrations error', error);
-    });
+    }).catch(error => setStatus({ loading: false, error: true, data: error }));
     event.preventDefault();
   };
 
   return (
-    status.loading === true ? (
-      <h1>
-        Submitting form...
-      </h1>
-    )
+    status.loading === true
+      ? (<h1>Submitting form...</h1>)
       : (
         <section className="form-section">
           <div className="form-section__mask">
@@ -59,6 +56,12 @@ const Registration = () => {
                 <h2 className="heading-secondary">
                   Registration
                 </h2>
+              </div>
+
+              <div>
+                { status.error === true
+                  ? <Error content={status.data} title="Failed Registration Attempt" nav={false} />
+                  : ''}
               </div>
 
               <div className="form__group">

@@ -33,7 +33,7 @@ const Login = () => {
         dispatch(actions.userActions.createUser(response.data.user));
         history.push('/homes');
       } else {
-        setStatus({ loading: false, error: true, data: 'Unknown user' });
+        setStatus({ loading: false, error: true, data: '' });
       }
     }).catch(error => setStatus({ loading: false, error: true, data: error }));
     event.preventDefault();

@@ -10,19 +10,16 @@ const Navbar = ({ cssClass }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.currentUser);
   const [status, setStatus] = useState(currentUser.loggedIn);
-  console.log('This is user Object', currentUser);
 
   const handleLogout = () => {
-    console.log('This is user logout!');
     if (currentUser.user) {
       const { user } = currentUser;
       userLogout('log_out', user.id, user.auth_token).then(res => {
-        console.log('This is the response:', res);
         if (res.statusText === 'No Content') {
           dispatch(actions.userActions.logout());
           setStatus(false);
         }
-      }).catch(err => console.log('Unsuccessful logout', err));
+      }).catch(err => err);
     }
   };
   return (
