@@ -12,7 +12,6 @@ import Error from '../Error.component';
 const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log('This is history:', history);
   const [status, setStatus] = useState({ loading: false, error: false, data: '' });
 
   const [state, setState] = useState({
@@ -28,13 +27,11 @@ const Login = () => {
   };
 
   const handleSubmit = event => {
-    // setStatus({ loading: true });
-
+    setStatus({ loading: true });
     postFormRequest('sign_in', { session: { ...state } }).then(response => {
       if (response.statusText === 'OK') {
-        setStatus({ loading: true });
         dispatch(actions.userActions.createUser(response.data.user));
-        // history.push('/homes');
+        history.push('/homes');
       } else {
         setStatus({ loading: false, error: true, data: '' });
       }

@@ -4,6 +4,7 @@
 import React, { useState /* useEffect */ } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
 import Navbar from '../Navbar.component';
 import actions from '../../actions/index.actions';
 import { postFormRequest } from '../../services/apiRequests.services';
@@ -34,7 +35,6 @@ const Registration = () => {
     setStatus({ loading: true });
     postFormRequest('sign_up', { user: { ...state } }).then(response => {
       if (response.statusText === 'Created') {
-        console.log('This is Registration:', response);
         dispatch(actions.userActions.createUser(response.data.user));
         history.push('/');
       } else {
@@ -46,7 +46,11 @@ const Registration = () => {
 
   return (
     status.loading === true
-      ? (<h1>Submitting form...</h1>)
+      ? (
+        <div className="loader">
+          <Loader type="Bars" height={20} width={20} color="#cf3917" />
+        </div>
+      )
       : (
         <section className="form-section">
           <div className="form-section__mask">
