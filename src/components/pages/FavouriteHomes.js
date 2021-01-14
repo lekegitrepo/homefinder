@@ -6,6 +6,7 @@ import { v4 } from 'uuid';
 // import { getFavouriteHomesRequest } from '../../services/apiRequests.services';
 import Card from '../cards/Card.component';
 import Navbar from '../Navbar.component';
+import Error from '../Error.component';
 // import actions from '../../actions/index.actions';
 
 const FavouriteHomes = () => {
@@ -17,19 +18,21 @@ const FavouriteHomes = () => {
 
   if (!currentUser.user) {
     return (
-      <section className="">
-        <Navbar cssClass="u-padding-left u-bg-color" />
-        <div className="u-center-text">
-          <h3 className="heading-secondary">User not logged in</h3>
-          <p>
-            Please,
-            <Link to="/login"> log in </Link>
-            or
-            <Link to="/registration"> sign up </Link>
-            to view the list of your Favourite House(s)
-          </p>
-        </div>
-      </section>
+      <Error content={
+        (
+          <>
+            <h3 className="heading-secondary">User not logged in</h3>
+            <p>
+              Please,
+              <Link to="/login"> log in </Link>
+              or
+              <Link to="/registration"> sign up </Link>
+              to view the list of your Favourite House(s)
+            </p>
+          </>
+        )
+      }
+      />
     );
   }
 

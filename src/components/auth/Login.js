@@ -6,17 +6,17 @@ import { useDispatch } from 'react-redux';
 import actions from '../../actions/index.actions';
 import { postFormRequest } from '../../services/apiRequests.services';
 import Navbar from '../Navbar.component';
+import Error from '../Error.component';
 
 const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [status, setStatus] = useState({ loading: false, error: false, data: '' });
 
   const [state, setState] = useState({
     email: '',
     password: '',
   });
-
-  const [status, setStatus] = useState({ loading: false });
 
   const handleChange = event => {
     setState(prevProps => ({
@@ -29,24 +29,19 @@ const Login = () => {
     setStatus({ loading: true });
 
     postFormRequest('sign_in', { session: { ...state } }).then(response => {
-      if (response.data.is_success === true) {
+      if (response.statusText === 'OK') {
         dispatch(actions.userActions.createUser(response.data.user));
         history.push('/homes');
       } else {
-        console.log('todo populate registration error');
+        setStatus({ loading: false, error: true, data: 'Unknown user' });
       }
-    }).catch(error => {
-      console.log('registrations error', error);
-    });
+    }).catch(error => setStatus({ loading: false, error: true, data: error }));
     event.preventDefault();
   };
 
   return (
-    status.loading === true ? (
-      <h1>
-        Submitting form...
-      </h1>
-    )
+    status.loading === true
+      ? (<h1> Submitting form... </h1>)
       : (
         <section className="form-section">
           <div className="form-section__mask">
@@ -56,6 +51,11 @@ const Login = () => {
                 <h2 className="heading-secondary">
                   Login
                 </h2>
+              </div>
+              <div>
+                { status.error === true && status.loading === false
+                  ? <Error content={status.data} title="Failed Login Attempt" nav={false} />
+                  : ''}
               </div>
 
               <div className="form__group">
@@ -72,16 +72,6 @@ const Login = () => {
                 />
                 <label htmlFor="email" className="form__label">Email</label>
               </div>
-              {/* <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={state.email}
-                onChange={handleChange}
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                required
-              /> */}
-
               <div className="form__group">
                 <input
                   type="password"
@@ -95,15 +85,6 @@ const Login = () => {
                 />
                 <label htmlFor="password" className="form__label">Password</label>
               </div>
-              {/* <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={state.password}
-                    onChange={handleChange}
-                    required
-                  />
-              */}
 
               <div className="form__group form-btn">
                 <button type="submit"> Sign In </button>
