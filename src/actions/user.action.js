@@ -7,4 +7,8 @@ const logout = () => ({
   type: 'LOGOUT',
 });
 
-export default { createUser, logout };
+const userError = () => ({
+  type: 'ERROR',
+});
+
+export default { createUser, logout, userError };
