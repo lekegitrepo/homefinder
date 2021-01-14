@@ -8,6 +8,10 @@ const currentUser = (state = {}, action) => {
       return {
         ...state, user: {}, loggedIn: false,
       };
+    case 'ERROR':
+      return {
+        ...state, user: {}, loggedIn: false,
+      };
     default:
       return state;
   }
