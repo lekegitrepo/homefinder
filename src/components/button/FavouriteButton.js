@@ -2,24 +2,26 @@
 import React, { useState } from 'react';
 import { useDispatch /* useSelector */ } from 'react-redux';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 import { postFavouriteHomeRequest, deleteFavouriteHomeRequest, getFavouriteHomesRequest } from '../../services/apiRequests.services';
 import actions from '../../actions/index.actions';
 
 const FavButton = ({ id, picked, userObj }) => {
   const dispatch = useDispatch();
   const [state, setState] = useState(picked);
+  const [status, setStatus] = useState({ loading: false, error: false, data: '' });
   const { user } = userObj;
 
   const fetchFavourites = async () => {
+    setStatus({ loading: true });
     await getFavouriteHomesRequest('favourites', user.auth_token).then(res => {
       if (res.statusText === 'OK') {
         dispatch(actions.homeActions.selectAllFavourites(res.data.favourites));
+        setStatus({ loading: false, error: false, data: '' });
       } else {
-        console.log('todo populate registration error');
+        setStatus({ loading: false, error: true, data: '' });
       }
-    }).catch(error => {
-      console.log('registrations error', error);
-    });
+    }).catch(error => setStatus({ loading: false, error: true, data: error }));
   };
 
   const handleCreateFavourite = () => postFavouriteHomeRequest('favourites', { id }, user.auth_token).then(resp => {
@@ -30,9 +32,7 @@ const FavButton = ({ id, picked, userObj }) => {
       );
       fetchFavourites();
     }
-  }).catch(err => {
-    console.log('Unable to add home as the favourite', err);
-  });
+  }).catch(error => setStatus({ loading: false, error: true, data: error }));
 
   const handleRemoveFavourite = () => {
     deleteFavouriteHomeRequest('remove_fav', { id }, user.auth_token).then(resp => {
@@ -42,23 +42,18 @@ const FavButton = ({ id, picked, userObj }) => {
 
         fetchFavourites();
       }
-    }).catch(err => {
-      console.log('Unable to add home as the favourite', err);
-    });
+    }).catch(error => setStatus({ loading: false, error: true, data: error }));
   };
 
   const handleClick = currentState => ((currentState === false)
     ? handleCreateFavourite : handleRemoveFavourite);
 
-  /* const handleClick = currentState => {
-    if (currentState === false) {
-      handleCreateFavourite();
-    } else {
-      handleRemoveFavourite();
+  const iconRender = () => {
+    if (state === false) {
+      return <i className="far fa-heart" />;
     }
-
-    // fetchFavourites();
-  }; */
+    return <i className="fas fa-heart" />;
+  };
 
   return (
     <button
@@ -66,7 +61,15 @@ const FavButton = ({ id, picked, userObj }) => {
       onClick={handleClick(state)}
       className="btn-like"
     >
-      { state === false ? <i className="far fa-heart" /> : <i className="fas fa-heart" /> }
+      {
+        status.loading === true
+          ? (
+            <div>
+              <Loader type="Bars" height={15} width={15} color="#cf3917" />
+            </div>
+          )
+          : iconRender()
+      }
     </button>
   );
 };

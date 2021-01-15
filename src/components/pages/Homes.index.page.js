@@ -1,44 +1,52 @@
 import React, { useState, useEffect } from 'react';
-// import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
+import Loader from 'react-loader-spinner';
 import { getHomesListRequest } from '../../services/apiRequests.services';
 import Card from '../cards/Card.component';
 import Navbar from '../Navbar.component';
 
 const Homes = () => {
   const [list, setList] = useState([]);
+  const [status, setStatus] = useState({ loading: false, error: false, data: '' });
 
-  useEffect(() => {
+  const fetchList = () => {
+    setStatus({ loading: true });
     getHomesListRequest('homes').then(response => {
       if (response.statusText === 'OK') {
         setList(response.data);
-        // console.log('This is the response:', response.data);
+        setStatus({ loading: false, error: false, data: '' });
       } else {
-        console.log('todo populate registration error');
+        setStatus({ loading: false, error: true, data: '' });
       }
-    }).catch(error => {
-      console.log('registrations error', error);
-    });
+    }).catch(error => setStatus({ loading: false, error: true, data: error }));
+  };
+
+  useEffect(() => {
+    fetchList();
   }, [setList]);
 
   return (
-    <section className="home-list">
-      <Navbar cssClass="u-padding-left u-bg-color" />
-      <div className="home-list__header">
-        <h3 className="heading-secondary">List of Houses for rent</h3>
-      </div>
-      <div className="home-list__row">
-        {
+    status.loading === true
+      ? (
+        <div className="loader">
+          <Loader type="Bars" height={20} width={20} color="#cf3917" />
+        </div>
+      )
+      : (
+        <section className="home-list">
+          <Navbar cssClass="u-padding-left u-bg-color" />
+          <div className="home-list__header">
+            <h3 className="heading-secondary">List of Houses for rent</h3>
+          </div>
+          <div className="home-list__row">
+            {
           (list.length === 0)
             ? <h3>No Rent House Available</h3>
             : list.homes.map(item => <Card key={v4()} detail={item} price={item.price} />)
         }
-      </div>
-      <Link to="/">
-        Back to Home page
-      </Link>
-    </section>
+          </div>
+        </section>
+      )
   );
 };
 
