@@ -48,7 +48,7 @@ const itemToAdd = {
     id: 4,
     home: 'Manor',
     description: 'This is a beautiful house',
-    location: 'Countryside'
+    location: 'Countryside',
   },
   homeId: 6,
   picked: true,
@@ -90,7 +90,7 @@ const updateHomeFavList = [
       id: 4,
       home: 'Manor',
       description: 'This is a beautiful house',
-      location: 'Countryside'
+      location: 'Countryside',
     },
     homeId: 6,
     picked: true,
