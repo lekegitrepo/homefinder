@@ -15,7 +15,7 @@ describe('render Login component', () => {
       {' '}
       <Login />
       {' '}
-                            </Provider>);
+    </Provider>);
     expect(wrapper.exists()).toBe(true);
   });
 });
