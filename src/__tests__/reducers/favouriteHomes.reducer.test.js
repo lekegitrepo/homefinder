@@ -110,8 +110,6 @@ describe('remove item from the list', () => {
     const { removeFavourite } = homeActions;
     const action = removeFavourite(itemToDelete);
     const updateState = favouriteHomes(updateHomeFavList, action);
-    console.log('This is updateState:', updateState);
-    console.log('This is FavList:', FavList);
     expect(updateState.length).toEqual(FavList.length);
   });
 });
