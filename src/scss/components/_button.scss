@@ -12,12 +12,12 @@
     border: none;
     background-color: transparent;
     color: $color-secondary-dark;
-    margin: .5rem;
+    margin: 0.5rem;
     cursor: pointer;
     outline: none;
   }
 
   &-like:hover {
-    opacity: .5;
+    opacity: 0.5;
   }
 }

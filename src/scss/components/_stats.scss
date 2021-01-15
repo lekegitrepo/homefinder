@@ -6,10 +6,11 @@
 
     &--primary {
       text-align: center;
-      font-size: .8rem;
+      font-size: 0.8rem;
       color: $color-grey-dark;
       margin-bottom: 1.2rem;
     }
+
     &--secondary {
       text-align: center;
       font-size: 2rem;
@@ -23,14 +24,16 @@
       margin: 2rem;
 
       &__header {
-        padding: 1rem 0 .2rem;
+        padding: 1rem 0 0.2rem;
         font-size: 3rem;
         color: $color-grey-dark-3;
       }
+
       &__text {
         padding: 2rem 0;
         font-size: 1rem;
       }
+
       &__btn {
         margin-top: 1rem;
       }
@@ -40,13 +43,16 @@
       flex-direction: column-reverse;
 
       &--description {
-        &__header, &__text, &__btn {
+        &__header,
+        &__text,
+        &__btn {
           text-align: center;
         }
       }
 
       &--image {
         text-align: center;
+
         img {
           width: 80%;
         }

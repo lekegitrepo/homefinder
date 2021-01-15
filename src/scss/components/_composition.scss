@@ -3,11 +3,11 @@
 
   &__card-comp {
     background-color: $color-white;
-    box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.4);
     border-radius: 2px;
     position: absolute;
     z-index: 10;
-    transition: all .2s;
+    transition: all 0.2s;
     outline-offset: 2rem;
     width: 20rem;
     height: 25rem;
@@ -18,7 +18,7 @@
       width: 20rem;
       min-width: 8rem;
       // height: 10rem;
-      box-shadow: 0 1.5rem 3rem rgba($color-black, .2);
+      box-shadow: 0 1.5rem 3rem rgba($color-black, 0.2);
     }
 
     @include respond(tab-port) {
@@ -28,9 +28,9 @@
 
     &--c1 {
       left: 2rem;
-      top: -.5rem;
+      top: -0.5rem;
 
-      @include respond(tab-land)  {
+      @include respond(tab-land) {
         top: 0;
         left: 15%;
         // transform: scale(1.2);
@@ -39,10 +39,10 @@
 
     &--c2 {
       right: 18%;
-      top: .05rem;
+      top: 0.05rem;
 
-      @include respond(tab-land)  {
-        top: .5rem;
+      @include respond(tab-land) {
+        top: 0.5rem;
         right: 15%;
         // transform: scale(1.3);
         // z-index: 100;
@@ -51,9 +51,9 @@
 
     &--c3 {
       left: 12%;
-      top: .5rem;
+      top: 0.5rem;
 
-      @include respond(tab-land)  {
+      @include respond(tab-land) {
         top: 1rem;
         left: 25%;
         // transform: scale(1.1);
@@ -63,14 +63,13 @@
 
     &:hover {
       outline: 1.5rem solid $color-secondary-dark;
-      transform: scale(1.05) translateY(-.5rem);
-      box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+      transform: scale(1.05) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem rgba($color-black, 0.5);
       z-index: 20;
     }
-
   }
 
   &:hover &__card:not(:hover) {
-    transform: scale(.95);
+    transform: scale(0.95);
   }
 }
