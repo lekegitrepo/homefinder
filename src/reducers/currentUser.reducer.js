@@ -1,4 +1,6 @@
-const currentUser = (state = {}, action) => {
+const initial = { user: {}, loggedIn: false };
+
+const currentUser = (state = { initial }, action) => {
   switch (action.type) {
     case 'CREATE_USER':
       return {
