@@ -5,34 +5,22 @@ const { homeActions } = actions;
 
 const homesFavList = [
   {
-    fav: {
-      id: 1,
-      home: 'Apartment',
-      description: 'This is a beautiful house',
-      location: 'Urban',
-    },
-    homeId: 1,
-    picked: true,
+    id: 1,
+    home: 'Apartment',
+    description: 'This is a beautiful house',
+    location: 'Urban',
   },
   {
-    fav: {
-      id: 2,
-      home: 'Mansion',
-      description: 'This is a beautiful house',
-      location: 'Urban',
-    },
-    homeId: 3,
-    picked: true,
+    id: 2,
+    home: 'Mansion',
+    description: 'This is a beautiful house',
+    location: 'Urban',
   },
   {
-    fav: {
-      id: 3,
-      home: 'cottage',
-      description: 'This is a beautiful house',
-      location: 'Country side',
-    },
-    homeId: 4,
-    picked: true,
+    id: 3,
+    home: 'cottage',
+    description: 'This is a beautiful house',
+    location: 'Country side',
   },
 ];
 
@@ -44,89 +32,57 @@ const itemToDelete = {
 };
 
 const itemToAdd = {
-  fav: {
+  id: 4,
+  home: 'Manor',
+  description: 'This is a beautiful house',
+  location: 'Countryside',
+};
+
+const updateHomeFavList = [
+  {
+    id: 1,
+    home: 'Apartment',
+    description: 'This is a beautiful house',
+    location: 'Urban',
+  },
+  {
+    id: 2,
+    home: 'Mansion',
+    description: 'This is a beautiful house',
+    location: 'Urban',
+  },
+  {
+    id: 3,
+    home: 'cottage',
+    description: 'This is a beautiful house',
+    location: 'Country side',
+  },
+  {
     id: 4,
     home: 'Manor',
     description: 'This is a beautiful house',
     location: 'Countryside',
   },
-  homeId: 6,
-  picked: true,
-};
-
-const updateHomeFavList = [
-  {
-    fav: {
-      id: 1,
-      home: 'Apartment',
-      description: 'This is a beautiful house',
-      location: 'Urban',
-    },
-    homeId: 1,
-    picked: true,
-  },
-  {
-    fav: {
-      id: 2,
-      home: 'Mansion',
-      description: 'This is a beautiful house',
-      location: 'Urban',
-    },
-    homeId: 2,
-    picked: true,
-  },
-  {
-    fav: {
-      id: 3,
-      home: 'cottage',
-      description: 'This is a beautiful house',
-      location: 'Country side',
-    },
-    homeId: 4,
-    picked: true,
-  },
-  {
-    fav: {
-      id: 4,
-      home: 'Manor',
-      description: 'This is a beautiful house',
-      location: 'Countryside',
-    },
-    homeId: 6,
-    picked: true,
-  },
 ];
 
 const FavList = [
   {
-    fav: {
-      id: 1,
-      home: 'Apartment',
-      description: 'This is a beautiful house',
-      location: 'Urban',
-    },
-    homeId: 1,
-    picked: true,
+    id: 1,
+    home: 'Apartment',
+    description: 'This is a beautiful house',
+    location: 'Urban',
   },
   {
-    fav: {
-      id: 2,
-      home: 'Mansion',
-      description: 'This is a beautiful house',
-      location: 'Urban',
-    },
-    homeId: 3,
-    picked: true,
+    id: 2,
+    home: 'Mansion',
+    description: 'This is a beautiful house',
+    location: 'Urban',
   },
   {
-    fav: {
-      id: 4,
-      home: 'cottage',
-      description: 'This is a beautiful house',
-      location: 'Country side',
-    },
-    homeId: 5,
-    picked: true,
+    id: 4,
+    home: 'cottage',
+    description: 'This is a beautiful house',
+    location: 'Country side',
   },
 ];
 
