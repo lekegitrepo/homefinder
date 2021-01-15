@@ -41,6 +41,10 @@
       width: 100%;
     }
 
+    &::-webkit-input-placeholder {
+      color: $color-grey-dark-2;
+    }
+
     &:focus {
       outline: none;
       box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
@@ -49,10 +53,6 @@
 
     &:focus:invalid {
       border-bottom: 3px solid $color-secondary-dark;
-    }
-
-    &::-webkit-input-placeholder {
-      color: $color-grey-dark-2;
     }
   }
 
