@@ -29,7 +29,6 @@ const Login = () => {
   const handleSubmit = event => {
     setStatus({ loading: true });
     postFormRequest('sign_in', { session: { ...state } }).then(response => {
-      console.log('This is response:', response);
       if (response.statusText === 'OK') {
         setStatus({ loading: false, error: false, data: '' });
         dispatch(actions.userActions.createUser(response.data.user));
