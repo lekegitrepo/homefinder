@@ -11,9 +11,7 @@ import FavouriteHomes from '../../components/pages/FavouriteHomes';
 import PageRouter from '../../containers/pageRouter.container';
 import Registration from '../../components/auth/Registration';
 import Login from '../../components/auth/Login';
-import Navbar from '../../components/Navbar.component';
 
-jest.mock('../../components/Navbar.component');
 jest.mock('../../components/auth/Registration');
 jest.mock('../../components/auth/Login');
 jest.mock('../../components/pages/Home');
@@ -22,10 +20,6 @@ jest.mock('../../components/pages/Homes.index.page');
 jest.mock('../../components/pages/Home.show.page');
 jest.mock('../../components/pages/FavouriteHomes');
 jest.mock('../../containers/pageRouter.container');
-// jest.mock('../../components/pages/FavouriteHomes');
-// jest.mock('../../components/pages/FavouriteHomes');
-
-// jest.spyOn(Navbar);
 
 describe('Validate the routes', () => {
   const initialState = {};
