@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import Loader from 'react-loader-spinner';
 import Navbar from '../Navbar.component';
 import actions from '../../actions/index.actions';

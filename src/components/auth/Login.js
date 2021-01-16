@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import actions from '../../actions/index.actions';
@@ -29,7 +29,9 @@ const Login = () => {
   const handleSubmit = event => {
     setStatus({ loading: true });
     postFormRequest('sign_in', { session: { ...state } }).then(response => {
+      console.log('This is response:', response);
       if (response.statusText === 'OK') {
+        setStatus({ loading: false, error: false, data: '' });
         dispatch(actions.userActions.createUser(response.data.user));
         history.push('/homes');
       } else {

@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import { useSelector } from 'react-redux';
 import Navbar from '../Navbar.component';
 import FavButton from '../button/FavouriteButton';
