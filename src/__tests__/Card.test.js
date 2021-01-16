@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import Card from '../components/Card.component';
+import Card from '../components/cards/Card.component';
 
 describe('Render Card component', () => {
   const initialState = {};
