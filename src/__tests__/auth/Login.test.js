@@ -11,11 +11,13 @@ describe('render Login component', () => {
 
   test('render the Login component', () => {
     store = mockStore(initialState);
-    const wrapper = shallow(<Provider store={store}>
-      {' '}
-      <Login />
-      {' '}
-    </Provider>);
+    const wrapper = shallow(
+      <Provider store={store}>
+        {' '}
+        <Login />
+        {' '}
+      </Provider>,
+    );
     expect(wrapper.exists()).toBe(true);
   });
 });

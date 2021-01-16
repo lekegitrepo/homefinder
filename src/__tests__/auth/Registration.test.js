@@ -11,11 +11,13 @@ describe('render Registration component', () => {
 
   test('check for the existence of the component', () => {
     store = mockStore(initialState);
-    const wrapper = shallow(<Provider store={store}>
-      {' '}
-      <Registration />
-      {' '}
-                            </Provider>);
+    const wrapper = shallow(
+      <Provider store={store}>
+        {' '}
+        <Registration />
+        {' '}
+      </Provider>,
+    );
     expect(wrapper.exists()).toBe(true);
   });
 });
