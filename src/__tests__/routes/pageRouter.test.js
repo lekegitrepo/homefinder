@@ -11,6 +11,21 @@ import FavouriteHomes from '../../components/pages/FavouriteHomes';
 import PageRouter from '../../containers/pageRouter.container';
 import Registration from '../../components/auth/Registration';
 import Login from '../../components/auth/Login';
+import Navbar from '../../components/Navbar.component';
+
+jest.mock('../../components/Navbar.component');
+jest.mock('../../components/auth/Registration');
+jest.mock('../../components/auth/Login');
+jest.mock('../../components/pages/Home');
+jest.mock('../../components/pages/PageNotFound.page');
+jest.mock('../../components/pages/Homes.index.page');
+jest.mock('../../components/pages/Home.show.page');
+jest.mock('../../components/pages/FavouriteHomes');
+jest.mock('../../containers/pageRouter.container');
+// jest.mock('../../components/pages/FavouriteHomes');
+// jest.mock('../../components/pages/FavouriteHomes');
+
+// jest.spyOn(Navbar);
 
 describe('Validate the routes', () => {
   const initialState = {};
@@ -19,6 +34,7 @@ describe('Validate the routes', () => {
 
   test('Valid route path for the home page', () => {
     store = mockStore(initialState);
+    Home.mockImplementation(() => <div>Home</div>);
     const wrapper = mount(
       <MemoryRouter initialEntries={['/']}>
         <Provider store={store}>
@@ -31,9 +47,11 @@ describe('Validate the routes', () => {
   });
 
   test('Invalid route should redirect to page not found', () => {
+    PageRouter.mockImplementation(() => <div>PageRouter</div>);
+    PageNotFound.mockImplementation(() => <div>PageNotFound</div>);
     const wrapper = mount(
       <MemoryRouter initialEntries={['/some-invalid-routes']}>
-        <PageRouter />
+        <PageNotFound />
       </MemoryRouter>,
     );
     expect(wrapper.find(Home)).toHaveLength(0);
@@ -42,6 +60,7 @@ describe('Validate the routes', () => {
 
   test('Valid route for the homes list index page', () => {
     store = mockStore(initialState);
+    Homes.mockImplementation(() => <div>Homes</div>);
     const wrapper = mount(
       <MemoryRouter initialEntries={['/homes']}>
         <Provider store={store}>
@@ -54,6 +73,7 @@ describe('Validate the routes', () => {
   });
 
   test('Valid route for the home show page', () => {
+    HomeDetail.mockImplementation(() => <div>HomeDetail</div>);
     const wrapper = mount(
       <MemoryRouter initialEntries={['/home/:id']}>
         <HomeDetail />
@@ -64,9 +84,13 @@ describe('Validate the routes', () => {
   });
 
   test('Valid route for the favourite houses page', () => {
+    store = mockStore(initialState);
+    FavouriteHomes.mockImplementation(() => <div>FavouriteHomes</div>);
     const wrapper = mount(
       <MemoryRouter initialEntries={['/favourites']}>
-        <FavouriteHomes />
+        <Provider store={store}>
+          <FavouriteHomes />
+        </Provider>
       </MemoryRouter>,
     );
     expect(wrapper.find(PageNotFound)).toHaveLength(0);
@@ -75,6 +99,7 @@ describe('Validate the routes', () => {
 
   test('Valid route for the login page', () => {
     store = mockStore(initialState);
+    Login.mockImplementation(() => <div>Login</div>);
     const wrapper = mount(
       <MemoryRouter initialEntries={['/login']}>
         <Provider store={store}>
@@ -88,6 +113,7 @@ describe('Validate the routes', () => {
 
   test('Valid route for the registration page', () => {
     store = mockStore(initialState);
+    Registration.mockImplementation(() => <div>Registration</div>);
     const wrapper = mount(
       <MemoryRouter initialEntries={['/registration']}>
         <Provider store={store}>
