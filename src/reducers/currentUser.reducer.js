@@ -1,5 +1,3 @@
-// const initial = { user: {}, loggedIn: false };
-
 const currentUser = (state = { user: {}, loggedIn: false }, action) => {
   switch (action.type) {
     case 'CREATE_USER':
