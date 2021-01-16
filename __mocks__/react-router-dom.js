@@ -1,14 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { BrowserRouter } from 'react-router-dom';
 
-const rrd = require('react-router-dom');
+// const mockRouter = require('react-router-dom');
 // Just render plain div with its children
-rrd.BrowserRouter = ({ children }) => <div>{children}</div>;
+// mockRouter.displayName = 'mockRouter';
+const mockRouter = ({ children }) => (
+  <div>
+    <BrowserRouter>
+      {children}
+    </BrowserRouter>
+  </div>
+);
+// module.exports = rrd;
 
-rrd.displayName = 'rrd';
-
-rrd.propTypes = {
-  children: PropTypes.element,
+mockRouter.defaultValue = {
+  children: <div />,
 };
 
-export default rrd;
+mockRouter.propTypes = {
+  children: PropTypes.element,
+};
+export default mockRouter;
