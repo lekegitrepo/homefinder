@@ -44,6 +44,10 @@
         color: $color-white;
       }
     }
+
+    @include respond(tab-port) {
+      flex-direction: column;
+    }
   }
 
   &-navbar__link {
