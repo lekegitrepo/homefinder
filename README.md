@@ -17,7 +17,7 @@ This is the frontend of the Ruby on Rails API [homefinder_api](https://github.co
 
 ## Live Demo
 
-[Live Demo Link]( https://)
+[Live Demo Link]( https://homefinderapp.netlify.app/)
 
 ## Backend repository link
 [homefinder_api](https://github.com/lekegitrepo/homefinder_api/tree/homefinder_api)
