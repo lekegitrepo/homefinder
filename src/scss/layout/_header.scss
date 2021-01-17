@@ -46,6 +46,7 @@
     }
 
     @include respond(tab-port) {
+      align-items: center;
       flex-direction: column;
     }
   }
